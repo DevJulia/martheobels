@@ -1,0 +1,35 @@
+.page-template-homepage {
+  .site {
+    min-height: 100vh;
+  }
+
+  .main-home {
+    display: flex;
+    padding: 40px 0;
+  }
+
+  section {
+    flex-shrink: 0;
+    will-change: transform;
+    max-width: 67vw;
+  }
+
+  .nav {
+    height: 2px;
+    width: 500px;
+    background: grey;
+    margin-top: 40px;
+
+    @include push--auto;
+
+    .progress {
+      height: 4px;
+      width: 0;
+      max-width: 100%;
+      background: red;
+      position: relative;
+      top: -1px;
+      transition: width 0.5s;
+    }
+  }
+}

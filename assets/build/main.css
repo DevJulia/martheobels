@@ -53,5 +53,39 @@ body {
   font-size: 1.6rem;
   font-family: "Montserrat", "Helvetica", "Arial", "Lucida Grande", sans-serif; }
 
+#wpadminbar {
+  bottom: 0;
+  top: auto;
+  opacity: 0.7; }
+
+.page-template-homepage .site {
+  min-height: 100vh; }
+
+.page-template-homepage .main-home {
+  display: flex;
+  padding: 40px 0; }
+
+.page-template-homepage section {
+  flex-shrink: 0;
+  will-change: transform;
+  max-width: 67vw; }
+
+.page-template-homepage .nav {
+  height: 2px;
+  width: 500px;
+  background: grey;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.page-template-homepage .nav .progress {
+  height: 4px;
+  width: 0;
+  max-width: 100%;
+  background: red;
+  position: relative;
+  top: -1px;
+  transition: width 0.5s; }
+
 
 /*# sourceMappingURL=main.css.map*/
