@@ -1,35 +1,203 @@
 .page-template-homepage {
-  .site {
-    min-height: 100vh;
+  /* Frame */
+  .frame {
+    padding-top: 4rem;
+    height: 60vh;
+    // line-height: 50vh;
+    // overflow: hidden;
   }
 
-  .main-home {
-    display: flex;
-    padding: 40px 0;
+  .slidee {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    > section {
+      float: left;
+      height: 100%;
+    }
   }
 
-  section {
-    flex-shrink: 0;
-    will-change: transform;
-    max-width: 67vw;
+  /* Scrollbar */
+  .navigation {
+    nav {
+      margin-top: 10px;
+      width: 670px;
+      @include push--auto;
+
+      ul {
+        position: relative;
+        width: 120%;
+        left: -10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        li {
+          flex: 1;
+        }
+      }
+
+      button {
+        background: none;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        width: 100%;
+        padding: 0;
+      }
+    }
   }
 
-  .nav {
+  .scrollbar {
+    width: 670px;
     height: 2px;
-    width: 500px;
-    background: grey;
-    margin-top: 40px;
+    margin-top: 2rem;
+    background: #ccc;
+    line-height: 0;
 
     @include push--auto;
+  }
 
-    .progress {
-      height: 4px;
-      width: 0;
-      max-width: 100%;
-      background: red;
-      position: relative;
-      top: -1px;
-      transition: width 0.5s;
+  .scrollbar .handle {
+    // width: 100px;
+    height: 100%;
+    // border-radius: 50%;
+    background: #292a33;
+    cursor: pointer;
+    position: relative;
+    // top: -5px;
+  }
+
+  .scrollbar .handle .mousearea {
+    position: absolute;
+    top: -9px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+  }
+
+  .pages {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .pages li {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 0 4px;
+    text-indent: -999px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .2);
+  }
+  
+  .pages li:hover {
+    background: #aaa;
+  }
+  
+  .pages li.active {
+    background: #666;
+  }
+
+  /* Slide */
+  .section-single-text {
+    display: flex;
+    width: 80vw;
+
+    &.section-home {
+      width: 100vw;
+
+      aside {
+        width: 50%;
+
+        .placeholder {
+          width: 50%;
+          height: 80%;
+        }
+      }
+    }
+
+    aside {
+      height: 100%;
+      width: 40%;
+      display: flex;
+      align-items: center;
+
+      .placeholder {
+        background: lightslategray;
+        width: 100%;
+        min-width: 300px;
+        height: 100%;
+  
+        &.img-main {
+          height: 100%;
+          background: grey;
+        }
+      }
+    }
+
+    .content {
+      width: 50%;
+      padding: 2rem;
+      
+      .h1 {
+        position: relative;
+        right: 160px;
+      }
+    }
+  }
+
+  .section-shop {
+    .products {
+      display: flex;
+    }
+
+    .no-title {
+      height: 2rem;
+    }
+
+    .placeholder {
+      width: 300px;
+      height: 300px;
+      background: rgba(9,9,121,1);
+      margin: 20px 40px;
+    }
+  }
+
+  .section-services {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    padding-left: 2rem;
+
+    .service {
+      width: 180px;
+      height: 180px;
+      border: 1px solid $black;
+    }
+  }
+
+  .section-3-col {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    padding: 2rem;
+
+    .placeholder {
+      width: 200px;
+      height: 200px;
+      background-color: gray;
+    }
+
+    .col {
+      flex: 1 1 30%;
     }
   }
 }

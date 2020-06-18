@@ -9,10 +9,12 @@
 @import
   'base/reset',
   'base/base',
+  'base/woocommerce',
   'base/helpers';
 
 // 3. Components
-
+@import
+  'components/buttons';
 
 // 4. Layout
 @import

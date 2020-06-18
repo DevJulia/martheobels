@@ -4,6 +4,10 @@
  */
 
 add_action('init', function() {
+    remove_action( 'storefront_header', 'storefront_product_search', 40);
+    remove_action( 'storefront_header', 'storefront_primary_navigation', 50);
+    remove_action( 'storefront_footer', 'storefront_credit', 20);
+
     /*
     remove_action( 'storefront_post_content_before', 'storefront_post_thumbnail', 10 );
 
@@ -14,49 +18,34 @@ add_action('init', function() {
     remove_action( 'storefront_before_content', 'woocommerce_breadcrumb', 10 );
     remove_action( 'storefront_before_content', 'woocommerce_breadcrumb', 10 );
     */
+
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
 });
 
+add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
+function woo_new_product_tab( $tabs ) {
+// Adds the new tab
+    $tabs['desc_tab'] = array(
+        'title'     => __( 'Additional Information', 'woocommerce' ),
+        'priority'  => 50,
+        'callback'  => 'woo_new_product_tab_content'
+    );
 
-// Supprime la sidebar
-add_action('get_header', 'remove_storefront_sidebar');
-function remove_storefront_sidebar()
+    return $tabs;
+}
+
+function woo_new_product_tab_content() {
+    // The new tab content
+    echo '<p>Lorem Ipsum</p>';
+}
+
+add_action('storefront_after_footer', 'browser_sync_script');
+function browser_sync_script()
 {
-    remove_action('storefront_sidebar', 'storefront_get_sidebar', 10);
-
-    return;
-
-    if (is_woocommerce()) {
-        remove_action('storefront_sidebar', 'storefront_get_sidebar', 10);
-    }
+    ?>
+    <script id="__bs_script__">//<![CDATA[
+        document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace("HOST", location.hostname));
+    //]]></script>
+    <?php
 }
 
-
-if ( ! function_exists( 'storefront_post_header' ) ) {
-    /**
-     * Display the post header with a link to the single post
-     *
-     * @since 1.0.0
-     */
-    function storefront_post_header() {
-        ?>
-        <header class="entry-header">
-            <?php
-            if ( is_single() ) {
-                the_title( '<h1 class="entry-title">', '</h1>' );
-                ?>
-                <div class="entry-metas">
-                    <?php storefront_post_meta(); ?>
-                </div>
-                <?php
-            } else {
-                if ( 'post' === get_post_type() ) {
-                    storefront_post_meta();
-                }
-
-                the_title( sprintf( '<h2 class="alpha entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
-            }
-            ?>
-        </header><!-- .entry-header -->
-        <?php
-    }
-}

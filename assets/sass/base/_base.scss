@@ -1,8 +1,24 @@
 html {
-	font-size: 60.5%;
+  font-size: 18px;
+  font-size: 18px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: $font-family;
 }
 
 body {
-  font-size: 1.6rem;
-  font-family: $font-family;
+  color: $black;
+}
+
+.h1 {
+  font-size: 2rem;
+}
+
+//DEV
+.site-header {
+  margin: 0 !important;
+  padding: 0 !important;
 }
