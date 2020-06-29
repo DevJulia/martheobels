@@ -119,7 +119,7 @@ __webpack_require__.r(__webpack_exports__);
 
 $(document).ready(function () {
   Object(_helpers_common_js__WEBPACK_IMPORTED_MODULE_0__["common"])();
-  Object(_pages_home_js__WEBPACK_IMPORTED_MODULE_1__["home"])();
+  if ($('body').hasClass('page-template-homepage')) Object(_pages_home_js__WEBPACK_IMPORTED_MODULE_1__["home"])();
 });
 
 /***/ }),

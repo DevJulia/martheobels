@@ -2,44 +2,30 @@
 /**
  * Template name: Présentation - Accueil
  */
-get_header(); ?>
+get_header(); 
+
+$_fields = get_fields(); ?>
 
 <div class="frame" id="basic">
   <div class="slidee">
-    <section class="section section-single-text section-home">
-      <aside>
-        <div class="placeholder"></div>
-        <div class="placeholder img-main"></div>
-      </aside>
-      <div class="content">
-        <h2 class="h1">A la fois chic et cool, un joli sac que l'on crée à son image, en un tour de main.</h2>
-        <p>Les sacs Marthe Obels sont inspirés du furoshiki, l’art japonais de nouer des tissus pour transporter des objets.</p>
-        <p>À mi-chemin entre sac à main, cabas et baluchon, ils se portent selon votre envie à l’épaule, à la main ou croisé, côté uni ou côté imprimé.</p>
-        <a href="#">Accéder à la boutique</a>
-      </div>
-    </section>
-
-    <section class="section section-single-text">
-      <aside>
-        <div class="placeholder"></div>
-      </aside>
-      <div class="content">
-        <h2 class="h1">Un sac pour les femmes qui aiment les jolies choses.</h2>
-        <p>Élégants et décontractés, les sacs Marthe Obels sont fabriqués en France. Ils sont conçus avec de beaux tissus artisanaux aux imprimés originaux que vous nouez avec une jolie sangle en cuir cousue main de la couleur de votre choix.</p>
-        <a href="#">Secrets de création</a>
-      </div>
-    </section>
-
-    <section class="section section-single-text">
-      <aside>
-        <div class="placeholder"></div>
-      </aside>
-      <div class="content">
-        <h2 class="h1">Un sac pour les femmes qui aiment les jolies choses.</h2>
-        <p>Élégants et décontractés, les sacs Marthe Obels sont fabriqués en France. Ils sont conçus avec de beaux tissus artisanaux aux imprimés originaux que vous nouez avec une jolie sangle en cuir cousue main de la couleur de votre choix.</p>
-        <a href="#">Secrets de création</a>
-      </div>
-    </section>
+    <?php foreach ($_fields['home_blocks'] as $index=>$block) : ?>
+      <section class="section section-single-text <?= $index == 0 ? 'section-home' : '' ?>">
+        <aside class="<?= $block['images']['has_second_img'] ? 'multiple-img' : 'single-img'; ?>">
+          <?php
+            if ($block['images']['has_second_img']) {
+              echo wp_get_attachment_image( $block['images']['image_2'], '(max-width: 525px) 100vw, 525px', '', array('class' => 'img-secondary'));
+            }
+          ?>
+          <?= wp_get_attachment_image( $block['images']['image'], '(max-width: 525px) 100vw, 525px', '', array('class' => 'img-main') ); ?>
+        </aside>
+        <div class="content">
+          <h2 class="h1"><?= $block['content']['title']; ?></h2>
+          <?= $block['content']['text']; ?>
+          
+          <a href="<?= $block['content']['link']['url']; ?>" title="<?= $block['content']['link']['title']; ?>"><?= $block['content']['link']['title']; ?></a>
+        </div>
+      </section>
+    <?php endforeach; ?>
 
     <section class="section section-shop">
       <h2 class="h1">Boutique</h2>
@@ -102,19 +88,7 @@ get_header(); ?>
     </section>
 
     <section class="section-3-col">
-      <div class="col">
-        <h2 class="h1">Mentions légales</h2>
-        <p>Il existe plusieurs manières de nouer votre furoshiki pour en faire des sacs de tailles et de styles différents. Voici un tutoriel pour le nouage simple avec une sangle.</p>
-        <p>Vous trouverez prochainement ici de nouveaux tutoriaux en video.</p>
-      </div>
-      <div class="col">
-        <p>Il existe plusieurs manières de nouer votre furoshiki pour en faire des sacs de tailles et de styles différents. Voici un tutoriel pour le nouage simple avec une sangle.</p>
-        <p>Vous trouverez prochainement ici de nouveaux tutoriaux en video.</p>
-      </div>
-      <div class="col">
-        <p>Pour entretenir votre furoshiki, lavez-le en machine à 30°. 
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-      </div>
+      <?php echo get_field('legal_text'); ?>
     </section>
   </div>
 </div>

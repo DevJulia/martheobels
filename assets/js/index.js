@@ -3,6 +3,8 @@ import { home } from './pages/home.js';
 
 $(document).ready(function() {
   common();
-  home();
+
+  if ($('body').hasClass('page-template-homepage'))
+    home();
 });
 
