@@ -2,6 +2,7 @@ function home()
 {
   var $frame = $('#basic');
   var $wrap = $frame.parent();
+  var sly;
 
   let options = {
     horizontal: 1,
@@ -17,16 +18,22 @@ function home()
     speed: 500,
     elasticBounds: 1,
     dragHandle: 1,
-    dynamicHandle: 1,
+    dynamicHandle: 0,
     clickBar: 1,
-    keyboardNavBy: 'pages',
+    keyboardNavBy: 'items',
   };
 
-  var sly = new Sly($frame, options).init();
+  if ($(window).width() >= 700) {
+    sly = new Sly($frame, options).init();
+  }
 
-  sly.on('moveEnd', function (e) {
-    console.log(Math.round(sly.pos.cur * 100 / sly.pos.end));
+  var nav = [];
+  $('.navigation button').each(function() {
+    nav.push($(this).attr('data-item'));
   });
+
+  // Update progress bar
+  sly.on('moveEnd', function() {updateNav(sly,nav)});
 
   $wrap.find('.toStart').on('click', function() {
     var item = $(this).data('item');
@@ -37,7 +44,33 @@ function home()
 
   
   $(window).resize(function () {
-    sly.reload();
+    if ($(window).width() < 700) {
+      sly.destroy();
+    } else {
+      if (sly.initialized) {
+        sly.reload();
+      } else {
+        sly = new Sly($frame, options).init();
+        sly.on('moveEnd', function() {updateNav(sly,nav)});
+      }
+    }
+  });
+}
+
+function updateNav(sly, nav) {
+  let percentage = Math.round(sly.pos.cur * 100 / sly.pos.end);
+  $('.scrollbar .progress').css('width', percentage + '%');
+
+  let currentIndex = Math.max.apply(null, nav.filter(function(v){
+    return v <= sly.rel.firstItem
+  }))
+
+  nav.forEach(item => {
+    if (item <= currentIndex) {
+      $('.navigation button[data-item="'+ item +'"]').addClass('active');
+    } else {
+      $('.navigation button[data-item="'+ item +'"]').removeClass('active');
+    }
   });
 }
 

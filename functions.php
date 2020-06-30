@@ -61,3 +61,22 @@ function ea_disable_gutenberg( $can_edit, $post_type ) {
 }
 add_filter( 'gutenberg_can_edit_post_type', 'ea_disable_gutenberg', 10, 2 );
 add_filter( 'use_block_editor_for_post_type', 'ea_disable_gutenberg', 10, 2 );
+
+show_admin_bar(false);
+
+function get_img_url($image)
+{
+	return THEME_URL . "/assets/img/" . $image;
+}
+
+//SVG
+function print_svg($file, $mode = 'view'){
+	$iconfile = new DOMDocument();
+	$iconfile->load(str_replace('http://localhost:8080/', 'http://localhost/', $file));
+	if ($mode == 'view') {
+		echo $iconfile->saveHTML($iconfile->getElementsByTagName('svg')[0]);
+	}
+	else {
+		return $iconfile->saveHTML($iconfile->getElementsByTagName('svg')[0]);
+	}
+}

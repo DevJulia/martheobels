@@ -86,24 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./assets/js/helpers/common.js":
-/*!*************************************!*\
-  !*** ./assets/js/helpers/common.js ***!
-  \*************************************/
-/*! exports provided: common */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "common", function() { return common; });
-function common() {
-  console.log($('body'));
-}
-
-
-
-/***/ }),
-
 /***/ "./assets/js/index.js":
 /*!****************************!*\
   !*** ./assets/js/index.js ***!
@@ -113,13 +95,10 @@ function common() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _helpers_common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/common.js */ "./assets/js/helpers/common.js");
-/* harmony import */ var _pages_home_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/home.js */ "./assets/js/pages/home.js");
-
+/* harmony import */ var _pages_home_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages/home.js */ "./assets/js/pages/home.js");
 
 $(document).ready(function () {
-  Object(_helpers_common_js__WEBPACK_IMPORTED_MODULE_0__["common"])();
-  if ($('body').hasClass('page-template-homepage')) Object(_pages_home_js__WEBPACK_IMPORTED_MODULE_1__["home"])();
+  if ($('body').hasClass('page-template-homepage')) Object(_pages_home_js__WEBPACK_IMPORTED_MODULE_0__["home"])();
 });
 
 /***/ }),
@@ -137,6 +116,7 @@ __webpack_require__.r(__webpack_exports__);
 function home() {
   var $frame = $('#basic');
   var $wrap = $frame.parent();
+  var sly;
   var options = {
     horizontal: 1,
     itemNav: 'basic',
@@ -151,13 +131,22 @@ function home() {
     speed: 500,
     elasticBounds: 1,
     dragHandle: 1,
-    dynamicHandle: 1,
+    dynamicHandle: 0,
     clickBar: 1,
-    keyboardNavBy: 'pages'
+    keyboardNavBy: 'items'
   };
-  var sly = new Sly($frame, options).init();
-  sly.on('moveEnd', function (e) {
-    console.log(Math.round(sly.pos.cur * 100 / sly.pos.end));
+
+  if ($(window).width() >= 700) {
+    sly = new Sly($frame, options).init();
+  }
+
+  var nav = [];
+  $('.navigation button').each(function () {
+    nav.push($(this).attr('data-item'));
+  }); // Update progress bar
+
+  sly.on('moveEnd', function () {
+    updateNav(sly, nav);
   });
   $wrap.find('.toStart').on('click', function () {
     var item = $(this).data('item'); // Animate a particular item to the start of the frame.
@@ -166,7 +155,33 @@ function home() {
     $frame.sly('toStart', item);
   });
   $(window).resize(function () {
-    sly.reload();
+    if ($(window).width() < 700) {
+      sly.destroy();
+    } else {
+      if (sly.initialized) {
+        sly.reload();
+      } else {
+        sly = new Sly($frame, options).init();
+        sly.on('moveEnd', function () {
+          updateNav(sly, nav);
+        });
+      }
+    }
+  });
+}
+
+function updateNav(sly, nav) {
+  var percentage = Math.round(sly.pos.cur * 100 / sly.pos.end);
+  $('.scrollbar .progress').css('width', percentage + '%');
+  var currentIndex = Math.max.apply(null, nav.filter(function (v) {
+    return v <= sly.rel.firstItem;
+  }));
+  nav.forEach(function (item) {
+    if (item <= currentIndex) {
+      $('.navigation button[data-item="' + item + '"]').addClass('active');
+    } else {
+      $('.navigation button[data-item="' + item + '"]').removeClass('active');
+    }
   });
 }
 

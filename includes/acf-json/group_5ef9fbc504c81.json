@@ -3,6 +3,22 @@
     "title": "[Page] Page d'accueil",
     "fields": [
         {
+            "key": "field_5efb31eb44d69",
+            "label": "CONTENU",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_5ef9fbeea025c",
             "label": "ACCUEIL",
             "name": "",
@@ -238,7 +254,7 @@
             "taxonomy": "",
             "allow_null": 0,
             "multiple": 1,
-            "return_format": "object",
+            "return_format": "id",
             "ui": 1
         },
         {
@@ -311,7 +327,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
+                    "return_format": "url",
                     "preview_size": "thumbnail",
                     "library": "all",
                     "min_width": "",
@@ -388,7 +404,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "return_format": "array",
+                            "return_format": "id",
                             "preview_size": "thumbnail",
                             "library": "all",
                             "min_width": "",
@@ -453,21 +469,6 @@
                             "toolbar": "basic",
                             "media_upload": 0,
                             "delay": 0
-                        },
-                        {
-                            "key": "field_5efa01d8c68f6",
-                            "label": "Lien",
-                            "name": "link",
-                            "type": "link",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "array"
                         }
                     ]
                 }
@@ -514,11 +515,11 @@
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "20",
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
+                    "return_format": "id",
                     "preview_size": "thumbnail",
                     "library": "all",
                     "min_width": "",
@@ -544,8 +545,8 @@
                     },
                     "default_value": "",
                     "tabs": "all",
-                    "toolbar": "basic",
-                    "media_upload": 0,
+                    "toolbar": "full",
+                    "media_upload": 1,
                     "delay": 0
                 }
             ]
@@ -585,6 +586,100 @@
             "toolbar": "full",
             "media_upload": 0,
             "delay": 0
+        },
+        {
+            "key": "field_5efb325a1bc68",
+            "label": "Fin accordéon",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1
+        },
+        {
+            "key": "field_5efb3186c6631",
+            "label": "Configuration",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5efb3198fd929",
+            "label": "Navigation",
+            "name": "navigation",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5efb31b2fd92a",
+                    "label": "Titre",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5efb31bffd92b",
+                    "label": "Numéro de diapositive",
+                    "name": "page_start",
+                    "type": "number",
+                    "instructions": "Saisir le numéro de diapositive qui correspond au début de la section, la numérotation commence de 0",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -606,5 +701,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1593445379
+    "modified": 1593530362
 }

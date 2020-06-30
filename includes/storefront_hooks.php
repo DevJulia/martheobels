@@ -6,6 +6,10 @@
 add_action('init', function() {
     remove_action( 'storefront_header', 'storefront_product_search', 40);
     remove_action( 'storefront_header', 'storefront_primary_navigation', 50);
+    remove_action( 'storefront_header', 'storefront_header_container', 0);
+    remove_action( 'storefront_header', 'storefront_header_container_close', 41);
+    add_action( 'storefront_header', 'mobels_primary_navigation', 50);
+
     remove_action( 'storefront_footer', 'storefront_credit', 20);
 
     /*
@@ -49,3 +53,79 @@ function browser_sync_script()
     <?php
 }
 
+
+if ( ! function_exists( 'storefront_site_title_or_logo' ) ) {
+	/**
+	 * Display the site title or logo
+	 *
+	 * @since 2.1.0
+	 * @param bool $echo Echo the string or return it.
+	 * @return string
+	 */
+	function storefront_site_title_or_logo( $echo = true ) {
+        $tag = 'div';
+
+        $logo = get_field('logo', 'options');
+
+        if ($logo) {
+            $logo = '<img src="' . $logo['url'] .'" alt="'. $logo['alt'] .'" />' ; 
+            $html = '<' . esc_attr( $tag ) . ' class="beta site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . $logo . '</a></' . esc_attr( $tag ) . '>';
+        } else {
+            $html = '<' . esc_attr( $tag ) . ' class="beta site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a></' . esc_attr( $tag ) . '>';
+        }
+
+		if ( ! $echo ) {
+			return $html;
+		}
+
+		echo $html; // WPCS: XSS ok.
+	}
+}
+
+if ( ! function_exists( 'storefront_primary_navigation_wrapper' ) ) {
+	/**
+	 * The primary navigation wrapper
+	 */
+	function storefront_primary_navigation_wrapper() {
+		echo '<div class="storefront-primary-navigation">';
+	}
+}
+
+if ( ! function_exists( 'storefront_primary_navigation_wrapper_close' ) ) {
+	/**
+	 * The primary navigation wrapper close
+	 */
+	function storefront_primary_navigation_wrapper_close() {
+		echo '</div>';
+	}
+}
+
+
+if ( ! function_exists( 'storefront_cart_link' ) ) {
+	/**
+	 * Cart Link
+	 * Displayed a link to the cart including the number of items present and the cart total
+	 *
+	 * @return void
+	 * @since  1.0.0
+	 */
+	function storefront_cart_link() {
+		?>
+			<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'storefront' ); ?>"><?php print_svg(get_img_url('icon-cart.svg')); ?></a>
+		<?php
+	}
+}
+
+function mobels_primary_navigation() {
+    ?>
+    <a href="mailto:<?= get_field('contact_email','options'); ?>"><?php the_field('contact_email', 'options'); ?></a>
+
+    <div class="social-icons-block">
+        <a href="<?= get_field('facebook', 'options'); ?>" target="_blank"><?php print_svg(get_img_url('icon-facebook.svg')) ?></a>
+        <a href="<?= get_field('instagram', 'options'); ?>" target="_blank"><?php print_svg(get_img_url('icon-instagram.svg')) ?></a>
+    </div>
+
+    <a href="<?= get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>'"><?php print_svg(get_img_url('icon-account.svg')); ?></a>
+
+    <?php
+}

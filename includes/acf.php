@@ -25,10 +25,7 @@ function my_acf_json_load_point($path)
  * Pages d'options
  */
 if ( function_exists('acf_add_options_page') ) {
-
-    acf_add_options_page('Accueil');
-    acf_add_options_page('Footer');
-
+    acf_add_options_page('Options du thème');
 }
 
 // Fix bug qui ajoute un anti-slash sur les pages d'options
