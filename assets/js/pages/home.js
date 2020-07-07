@@ -1,5 +1,34 @@
 function home()
 {
+  // Splash screen
+  var $scene = $('.js-scene');
+  function slideSplash(e) {
+    var scrollingDown = (function () {
+      var delta,
+          compareEvent;
+      
+      if (e.type ==='touchmove') {
+        compareEvent = 'touchmove';
+      } else {
+        compareEvent = 'DOMMouseScroll';
+      }
+      
+      delta = e.type === compareEvent ?
+              e.originalEvent.detail * -40 :
+              e.originalEvent.wheelDelta; 
+      
+      return delta > 0 ? 0 : 1;
+    }());
+
+    if (scrollingDown) {
+      $scene.addClass('is-over');
+      $(window).off("mousewheel DOMMouseScroll touchmove", slideSplash);
+    } else {
+      $scene.removeClass('is-over');
+    }
+  }
+  $(window).on("mousewheel DOMMouseScroll touchmove", slideSplash);
+
   var $frame = $('#basic');
   var $wrap = $frame.parent();
   var sly;
@@ -58,7 +87,7 @@ function home()
 }
 
 function updateNav(sly, nav) {
-  let percentage = Math.round(sly.pos.cur * 100 / sly.pos.end);
+  let percentage = sly.pos.cur * 100 / sly.pos.end;
   $('.scrollbar .progress').css('width', percentage + '%');
 
   let currentIndex = Math.max.apply(null, nav.filter(function(v){

@@ -1,4 +1,114 @@
 .page-template-homepage {
+  /* Splash screen */
+  $transition-time: 1s;
+  $transition-ease: ease;
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .deck {
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: hidden;
+    
+    &:before,
+    &:after {
+      content: '';
+      width: 100%;
+      height: 50%;
+      position: absolute;
+      left: 0;
+      background: $primary;
+      transition: transform $transition-time $transition-ease;
+    }
+    &:before {
+      top: 0;
+    }
+    &:after {
+      bottom: 0;
+    }
+    &.is-over {
+      pointer-events: none;
+      
+      &:before {
+        -webkit-transform: translate3d(-100vw, 0, 0);
+        transform: translate3d(-100vw, 0, 0);
+      }
+      &:after {
+        -webkit-transform: translate3d(100vw, 0, 0);
+        transform: translate3d(100vw, 0, 0);
+      }
+
+      .text .up {
+        -webkit-transform: translate3d(-100vw, 0, 0);
+        transform: translate3d(-100vw, 0, 0);
+      }
+
+      .text:before {
+        -webkit-transform: translate3d(-100vw, 0, 0);
+        transform: translate3d(-100vw, 0, 0);
+      }
+
+      .text:after {
+        -webkit-transform: translate3d(100vw, 0, 0);
+        transform: translate3d(100vw, 0, 0);
+      }
+    }
+  }
+  
+  .text {
+    $height: 3em;
+    width: 5em;
+    height: $height;
+    
+    z-index: 20;
+    font-size: 4rem;
+    line-height: 1em;
+    font-weight: 700;
+    color: #fff;
+    transition: transform $transition-time $transition-ease;
+
+    .up {
+      height: $height/2;
+      position: relative;
+      z-index: 20;
+      overflow: hidden;
+      transition: transform $transition-time $transition-ease;
+    }
+    
+    &:before, &:after {
+      display: block;
+      
+      overflow: hidden;
+      
+      transition: transform $transition-time $transition-ease;
+    }
+    &:before {
+      height: $height/2;
+      position: relative;
+      z-index: 20;
+    }
+    &:after {
+      width: inherit;
+      padding-bottom: .09em;
+  
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      vertical-align: bottom;
+      clip: rect($height/2 auto auto auto);
+    }
+  }
+
   /* Full page layout */
   .site-content .col-full {
     max-width: none;
@@ -19,7 +129,7 @@
   /* Scrollbar */
   .navigation {
     overflow: hidden;
-    padding-bottom: 4px;
+    padding-bottom: 5px;
 
     nav {
       width: calc(#{$scrollbar-width} * 1.05);
@@ -76,13 +186,14 @@
     @include push--auto;
 
     .handle {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: $primary;
       cursor: pointer;
       position: relative;
-      top: -4px;
+      top: -5px;
+      left: 1px;
     }
 
     .progress {

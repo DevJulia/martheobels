@@ -14,7 +14,7 @@ function theme_load_scripts() {
 
         //Sly
         wp_register_script('sly',THEME_URL . '/assets/vendor/sly/sly.min.js?' . filemtime(THEME_PATH . '/assets/vendor/sly/sly.min.js'), '1.0', true);
-		wp_enqueue_script('sly');
+        wp_enqueue_script('sly');
 
         //DEV
         wp_register_script('theme_script', THEME_URL . '/assets/build/main.js?' . filemtime(THEME_PATH . '/assets/build/main.js'), ['jquery'], '1.0', true);

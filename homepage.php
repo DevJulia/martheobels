@@ -6,6 +6,18 @@ get_header();
 
 $_fields = get_fields(); ?>
 
+<div class="deck js-scene">
+  <div class="text centered" title="How about you scroll down">
+    <?php 
+      $logo = get_field('logo', 'options');
+    ?>
+    <div class="up">
+      <img src="<?= $logo['url']; ?>" alt="">
+    </div>
+    
+  </div>
+</div>
+
 <div class="frame" id="basic">
   <div class="slidee">
     <?php foreach ($_fields['home_blocks'] as $index=>$block) : ?>
@@ -34,7 +46,7 @@ $_fields = get_fields(); ?>
       for ($my_page = 0; $my_page <= $my_total - 1; $my_page++) :
     ?>
     
-      <section class="section-shop">
+      <section class="section section-shop">
         <?php if ($my_page == 0) : ?>
           <h2 class="h1">Boutique</h2>
         <?php else : ?>
@@ -63,7 +75,7 @@ $_fields = get_fields(); ?>
       wp_reset_postdata(); 
     ?>
 
-    <section class="section-services">
+    <section class="section section-services">
       <ul>
         <?php foreach ($_fields['shop_services'] as $service) : ?>
           <li class="service">
