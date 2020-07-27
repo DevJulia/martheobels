@@ -98,7 +98,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_home_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages/home.js */ "./assets/js/pages/home.js");
 
 $(document).ready(function () {
-  if ($('body').hasClass('page-template-homepage')) Object(_pages_home_js__WEBPACK_IMPORTED_MODULE_0__["home"])();
+  if ($('body').hasClass('page-template-homepage')) {
+    Object(_pages_home_js__WEBPACK_IMPORTED_MODULE_0__["home"])();
+  }
 });
 
 /***/ }),
@@ -133,13 +135,18 @@ function home() {
 
     if (scrollingDown) {
       $scene.addClass('is-over');
-      $(window).off("mousewheel DOMMouseScroll touchmove", slideSplash);
+      $(window).off("mousewheel DOMMouseScroll touchmove keydown", slideSplash);
+      createSly();
     } else {
       $scene.removeClass('is-over');
     }
   }
 
-  $(window).on("mousewheel DOMMouseScroll touchmove", slideSplash);
+  $(window).on("mousewheel DOMMouseScroll touchmove keydown", slideSplash);
+}
+
+function createSly() {
+  // Create Sly instance
   var $frame = $('#basic');
   var $wrap = $frame.parent();
   var sly;

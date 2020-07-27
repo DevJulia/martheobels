@@ -13,7 +13,8 @@ function theme_load_styles() {
         
         wp_enqueue_style('theme_style');
 
-        wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700', false );
+        wp_enqueue_style( 'montserrat-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700', false );
+        wp_enqueue_style( 'alice-fonts', 'https://fonts.googleapis.com/css2?family=Alice&display=swap', false );
     }
 }
 

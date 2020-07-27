@@ -111,7 +111,14 @@ if ( ! function_exists( 'storefront_cart_link' ) ) {
 	 */
 	function storefront_cart_link() {
 		?>
-			<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'storefront' ); ?>"><?php print_svg(get_img_url('icon-cart.svg')); ?></a>
+            <a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'storefront' ); ?>"><?php print_svg(get_img_url('icon-cart.svg')); ?>
+                <?php 
+                    $cart_count = WC()->cart->get_cart_contents_count();
+                ?>
+                <?php if ($cart_count) : ?>
+                    <div class="count"><?php echo $cart_count; ?></div>
+                <?php endif; ?>
+            </a>
 		<?php
 	}
 }
@@ -129,3 +136,11 @@ function mobels_primary_navigation() {
 
     <?php
 }
+
+add_filter( 'woocommerce_get_image_size_thumbnail', function( $size ) {
+    return array(
+    'width' => 445,
+    'height' => 445,
+    'crop' => 0,
+    );
+} );

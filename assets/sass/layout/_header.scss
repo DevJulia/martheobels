@@ -54,6 +54,24 @@
 
       .cart-contents {
         padding: 0;
+        position: relative;
+
+        .count {
+          background: $primary;
+          border-radius: 50%;
+          color: $white;
+          opacity: 1;
+          text-align: center;
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          font-weight: $font-weight-bold;
+          font-size: 0.7rem;
+          bottom: -10px;
+          left: -3px;
+          z-index: 99999999;
+        }
 
         &::after {
           display: none;

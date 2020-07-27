@@ -1,4 +1,5 @@
 $font-family: 'Montserrat','Helvetica', 'Arial', 'Lucida Grande', sans-serif;
+$font-family-serif: 'Alice', serif;
 
 $font-weight-thin: 100;
 $font-weight-light: 300;
@@ -9,8 +10,12 @@ $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
 $font-weight-black: 900;
 
+/* Home */
+$section-padding: 30px;
+
 /* Colors */
 $primary: #3300CC;
 $black: #000;
+$white: #fff;
 
 $headerHeight: 120px;

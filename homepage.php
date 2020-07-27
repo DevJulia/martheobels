@@ -7,14 +7,13 @@ get_header();
 $_fields = get_fields(); ?>
 
 <div class="deck js-scene">
-  <div class="text centered" title="How about you scroll down">
-    <?php 
-      $logo = get_field('logo', 'options');
-    ?>
-    <div class="up">
-      <img src="<?= $logo['url']; ?>" alt="">
-    </div>
-    
+  <div class="logo centered">
+    <?php print_svg(get_img_url('brand-vertical.svg')); ?>
+  </div>
+  <div class="deck--navigation">
+    <?php print_svg(get_img_url('action-scroll.svg')); ?>
+    <?php print_svg(get_img_url('action-key.svg')); ?>
+    <div class="text">SCROLL / CLAVIER</div>
   </div>
 </div>
 
@@ -35,7 +34,7 @@ $_fields = get_fields(); ?>
           <?= $block['content']['text']; ?>
           
           <?php if ($block['content']['link']) : ?>
-            <a href="<?= $block['content']['link']['url']; ?>" title="<?= $block['content']['link']['title']; ?>"><?= $block['content']['link']['title']; ?></a>
+            <a class="main-link" href="<?= $block['content']['link']['url']; ?>" title="<?= $block['content']['link']['title']; ?>"><?= $block['content']['link']['title']; ?> <?php print_svg(get_img_url('thin-arrow.svg')); ?></a>
           <?php endif; ?>
         </div>
       </section>
@@ -46,11 +45,11 @@ $_fields = get_fields(); ?>
       for ($my_page = 0; $my_page <= $my_total - 1; $my_page++) :
     ?>
     
-      <section class="section section-shop">
+      <section class="section section-shop <?php if ($my_page == 0) { echo 'first-slide'; } ?>">
         <?php if ($my_page == 0) : ?>
-          <h2 class="h1">Boutique</h2>
+          <h2 class="h1">Nouvelle collection</h2>
         <?php else : ?>
-          <div class="no-title"></div>
+          <div class="no-title h1"></div>
         <?php endif; ?>
         <ul class="products">
           <?php 
@@ -75,16 +74,22 @@ $_fields = get_fields(); ?>
       wp_reset_postdata(); 
     ?>
 
-    <section class="section section-services">
-      <ul>
-        <?php foreach ($_fields['shop_services'] as $service) : ?>
-          <li class="service">
-            <img class="<?= $service['subtitle'] ? 'small-img' : ''; ?>" src="<?= $service['icon']; ?>" alt="<?= esc_attr($service['title']); ?>">
-            <?= $service['title']; ?>
-            <?= $service['subtitle']; ?>
-          </li>
-        <?php endforeach; ?>
-      </ul>
+    <section class="section section-shop-info">
+      <a class="shop-link" href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>">
+        <p class="title">Voir tous les produits</p>
+        <p>Accéder à la boutique</p>
+      </a>
+      <div class="section-services">
+        <ul>
+          <?php foreach ($_fields['shop_services'] as $service) : ?>
+            <li class="service">
+              <img class="<?= $service['subtitle'] ? 'small-img' : ''; ?>" src="<?= $service['icon']; ?>" alt="<?= esc_attr($service['title']); ?>">
+              <?= $service['title']; ?>
+              <span class="subtitle"><?= $service['subtitle']; ?></span>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
     </section>
 
     <?php foreach ($_fields['creations_blocks'] as $index=>$block) : ?>
@@ -99,7 +104,7 @@ $_fields = get_fields(); ?>
       </section>
     <?php endforeach; ?>
 
-    <section class="section">
+    <section class="section section-conseils">
       <h2 class="h1">Conseils</h2>
       <div class="section-3-col">
         <?= wp_get_attachment_image( $_fields['conseils']['image'], array('700','900'), '', array('class' => 'img-main') ); ?>
@@ -107,7 +112,7 @@ $_fields = get_fields(); ?>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section-legal">
       <h2 class="h1">Mentions légales</h2>
       <div class="section-3-col">
         <?php echo get_field('legal_text'); ?>
