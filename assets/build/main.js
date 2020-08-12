@@ -115,6 +115,8 @@ $(document).ready(function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "home", function() { return home; });
+var minWidthSly = 1200;
+
 function home() {
   // Splash screen
   var $scene = $('.js-scene');
@@ -149,13 +151,13 @@ function createSly() {
   // Create Sly instance
   var $frame = $('#basic');
   var $wrap = $frame.parent();
-  var sly;
+  var sly = {};
   var options = {
     horizontal: 1,
     itemNav: 'basic',
     slidee: '.slidee',
     smart: 1,
-    // mouseDragging: 1,
+    mouseDragging: 1,
     // touchDragging: 1,
     releaseSwing: 1,
     startAt: 0,
@@ -169,17 +171,17 @@ function createSly() {
     keyboardNavBy: 'items'
   };
 
-  if ($(window).width() >= 700) {
-    sly = new Sly($frame, options).init();
+  if ($(window).width() > minWidthSly) {
+    sly = new Sly($frame, options).init(); // Update progress bar
+
+    sly.on('moveEnd', function () {
+      updateNav(sly, nav);
+    });
   }
 
   var nav = [];
   $('.navigation button').each(function () {
     nav.push($(this).attr('data-item'));
-  }); // Update progress bar
-
-  sly.on('moveEnd', function () {
-    updateNav(sly, nav);
   });
   $wrap.find('.toStart').on('click', function () {
     var item = $(this).data('item'); // Animate a particular item to the start of the frame.
@@ -188,7 +190,7 @@ function createSly() {
     $frame.sly('toStart', item);
   });
   $(window).resize(function () {
-    if ($(window).width() < 700) {
+    if ($(window).width() <= minWidthSly) {
       sly.destroy();
     } else {
       if (sly.initialized) {
@@ -199,6 +201,28 @@ function createSly() {
           updateNav(sly, nav);
         });
       }
+    }
+  }); //Fix trackpad scroll
+
+  var lethargy = new Lethargy(5, 20, 0.05);
+  var recentScroll = false;
+  $(window).on('mousewheel', function (e) {
+    e.stopPropagation();
+
+    if (!recentScroll) {
+      console.log("action");
+      console.log(lethargy.check(e));
+
+      if (lethargy.check(e) == 1) {
+        sly.next();
+      } else if (lethargy.check(e) == -1) {
+        sly.prev();
+      }
+
+      recentScroll = true;
+      window.setTimeout(function () {
+        recentScroll = false;
+      }, 1000);
     }
   });
 }

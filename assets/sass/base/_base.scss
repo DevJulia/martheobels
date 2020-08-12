@@ -28,3 +28,10 @@ p {
   margin-bottom: 1em;
   line-height: 1.375;
 }
+
+a:focus, 
+input:focus, 
+textarea:focus, 
+button:focus {
+  outline: none;
+}

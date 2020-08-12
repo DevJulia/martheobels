@@ -1,3 +1,5 @@
+const minWidthSly = 1200;
+
 function home()
 {
   // Splash screen
@@ -36,14 +38,14 @@ function createSly() {
   // Create Sly instance
   var $frame = $('#basic');
   var $wrap = $frame.parent();
-  var sly;
+  var sly = {};
 
   let options = {
     horizontal: 1,
     itemNav: 'basic',
     slidee: '.slidee',
     smart: 1,
-    // mouseDragging: 1,
+    mouseDragging: 1,
     // touchDragging: 1,
     releaseSwing: 1,
     startAt: 0,
@@ -57,17 +59,16 @@ function createSly() {
     keyboardNavBy: 'items',
   };
 
-  if ($(window).width() >= 700) {
+  if ($(window).width() > minWidthSly) {
     sly = new Sly($frame, options).init();
+    // Update progress bar
+    sly.on('moveEnd', function() {updateNav(sly,nav)});
   }
 
   var nav = [];
   $('.navigation button').each(function() {
     nav.push($(this).attr('data-item'));
   });
-
-  // Update progress bar
-  sly.on('moveEnd', function() {updateNav(sly,nav)});
 
   $wrap.find('.toStart').on('click', function() {
     var item = $(this).data('item');
@@ -77,7 +78,7 @@ function createSly() {
   });
 
   $(window).resize(function () {
-    if ($(window).width() < 700) {
+    if ($(window).width() <= minWidthSly) {
       sly.destroy();
     } else {
       if (sly.initialized) {
@@ -88,7 +89,30 @@ function createSly() {
       }
     }
   });
+
+  
+
+  //Fix trackpad scroll
+  var lethargy = new Lethargy(5, 20, 0.05);
+
+  var recentScroll = false;
+  $(window).on('mousewheel',function(e) {
+    e.stopPropagation();
+
+    if (!recentScroll) {
+      console.log("action");
+      console.log(lethargy.check(e));
+      if(lethargy.check(e) == 1) {
+        sly.next();
+      } else if (lethargy.check(e) == -1) {
+        sly.prev();
+      }
+      recentScroll = true;
+      window.setTimeout(() => { recentScroll = false; }, 1000)
+    }
+  });
 }
+
 
 function updateNav(sly, nav) {
   let percentage = sly.pos.cur * 100 / sly.pos.end;

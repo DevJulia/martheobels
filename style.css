@@ -1,15 +1,8 @@
 /*
-Theme Name: Mantion
+Theme Name: Marthe Obels
 Description: Theme enfant de StoreFront
-Author: Christopher Bulhé - Netemedia
-Author URI: https://www.netemedia.fr
+Author: Julia Nguyen
+Author URI: https://dev-julia.com
 Template: storefront
 Version: 1.0.0
 */
- 
-
-body #primary {
-    float: none;
-    width: 100%;
-    margin-right: 0;
-}

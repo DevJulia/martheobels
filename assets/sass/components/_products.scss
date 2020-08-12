@@ -28,6 +28,12 @@ ul.products {
       color: $black;
     }
 
+    .added_to_cart {
+      position: absolute;
+      transform: translate(-50%, 0);
+      bottom: 25%;
+    }
+
     &:hover {
       .add_to_cart_button {
         transform: translate(-50%, 10%);
@@ -39,7 +45,6 @@ ul.products {
   @media screen and (max-width: 1800px) {
     .attachment-woocommerce_thumbnail {
       width: 320px;
-      height: 320px;
     }
   }
 }

@@ -141,6 +141,17 @@ add_filter( 'woocommerce_get_image_size_thumbnail', function( $size ) {
     return array(
     'width' => 445,
     'height' => 445,
-    'crop' => 0,
+    'crop' => 1,
     );
 } );
+
+/**
+ * Sidebar on single product page
+ */
+add_action( 'get_header', 'mobels_remove_storefront_sidebar' );
+ 
+function mobels_remove_storefront_sidebar() {
+   if ( is_product() ) {
+      remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
+   }
+}

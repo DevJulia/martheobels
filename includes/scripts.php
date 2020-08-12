@@ -15,6 +15,10 @@ function theme_load_scripts() {
         //Sly
         wp_register_script('sly',THEME_URL . '/assets/vendor/sly/sly.min.js?' . filemtime(THEME_PATH . '/assets/vendor/sly/sly.min.js'), '1.0', true);
         wp_enqueue_script('sly');
+        
+        //Lethargy
+        wp_register_script('lethargy',THEME_URL . '/assets/vendor/lethargy.min.js?' . filemtime(THEME_PATH . '/assets/vendor/lethargy.min.js'), '1.0', true);
+        wp_enqueue_script('lethargy');
 
         //DEV
         wp_register_script('theme_script', THEME_URL . '/assets/build/main.js?' . filemtime(THEME_PATH . '/assets/build/main.js'), ['jquery'], '1.0', true);
