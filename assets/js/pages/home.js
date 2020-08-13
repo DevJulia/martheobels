@@ -92,23 +92,22 @@ function createSly() {
 
   
 
-  //Fix trackpad scroll
-  var lethargy = new Lethargy(5, 20, 0.05);
-
+  //Fix Sly trackpad scroll
   var recentScroll = false;
   $(window).on('mousewheel',function(e) {
     e.stopPropagation();
 
     if (!recentScroll) {
-      console.log("action");
-      console.log(lethargy.check(e));
-      if(lethargy.check(e) == 1) {
-        sly.next();
-      } else if (lethargy.check(e) == -1) {
-        sly.prev();
+      const wheelDelta = e.originalEvent.wheelDelta;
+
+      if (wheelDelta > 0 && wheelDelta < 100) {
+        sly.nextPage();
+      } else if (wheelDelta < 0 && wheelDelta > -100 ) {
+        sly.prevPage();
       }
+
       recentScroll = true;
-      window.setTimeout(() => { recentScroll = false; }, 1000)
+      window.setTimeout(() => { recentScroll = false; }, 800)
     }
   });
 }

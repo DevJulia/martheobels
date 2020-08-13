@@ -202,27 +202,25 @@ function createSly() {
         });
       }
     }
-  }); //Fix trackpad scroll
+  }); //Fix Sly trackpad scroll
 
-  var lethargy = new Lethargy(5, 20, 0.05);
   var recentScroll = false;
   $(window).on('mousewheel', function (e) {
     e.stopPropagation();
 
     if (!recentScroll) {
-      console.log("action");
-      console.log(lethargy.check(e));
+      var wheelDelta = e.originalEvent.wheelDelta;
 
-      if (lethargy.check(e) == 1) {
-        sly.next();
-      } else if (lethargy.check(e) == -1) {
-        sly.prev();
+      if (wheelDelta > 0 && wheelDelta < 100) {
+        sly.nextPage();
+      } else if (wheelDelta < 0 && wheelDelta > -100) {
+        sly.prevPage();
       }
 
       recentScroll = true;
       window.setTimeout(function () {
         recentScroll = false;
-      }, 1000);
+      }, 800);
     }
   });
 }
