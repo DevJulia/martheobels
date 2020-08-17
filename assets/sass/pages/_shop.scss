@@ -1,0 +1,45 @@
+.widget .widget-title, 
+.widget .widgettitle {
+  border-bottom: 0;
+  text-transform: uppercase;
+  font-weight: $font-weight-bold;
+}
+
+.storefront-sorting {
+  .woocommerce-result-count,
+  .woocommerce-pagination {
+    float: none;
+  }
+
+  .woocommerce-result-count {
+    text-align: center;
+    font-family: $font-family-serif;
+  }
+
+  .woocommerce-pagination {
+    .page-numbers li .page-numbers {
+      background: none;
+      border: 1px solid $black;
+      padding: 0;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 2px;
+
+      &.current {
+        border: 2px solid $black;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+}
+
+.dgwt-wcas-no-submit .dgwt-wcas-ico-magnifier {
+  opacity: 1;
+}
+
+.dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input {
+  border: 2px solid $black;
+}

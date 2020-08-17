@@ -101,6 +101,9 @@ $(document).ready(function () {
   if ($('body').hasClass('page-template-homepage')) {
     Object(_pages_home_js__WEBPACK_IMPORTED_MODULE_0__["home"])();
   }
+
+  var width = $('.single-product .square-text').outerWidth();
+  $('.single-product .square-text').css('height', width + 'px');
 });
 
 /***/ }),

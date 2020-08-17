@@ -15,6 +15,7 @@
 // 3. Components
 @import
   'components/buttons',
+  'components/inputs',
   'components/products';
 
 // 4. Layout
@@ -25,4 +26,7 @@
 // 5. Page-specific styles
 @import
   'pages/common',
+  'pages/shop',
+  'pages/product',
+  'pages/cart',
   'pages/home';

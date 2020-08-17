@@ -75,7 +75,7 @@ $_fields = get_fields(); ?>
     ?>
 
     <section class="section section-shop-info">
-      <a class="shop-link" href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>">
+      <a class="shop-link" href="<?= get_permalink( wc_get_page_id( 'shop' ) ); ?>">
         <p class="title">Voir tous les produits</p>
         <p>Accéder à la boutique</p>
       </a>
@@ -109,13 +109,6 @@ $_fields = get_fields(); ?>
       <div class="section-3-col">
         <?= wp_get_attachment_image( $_fields['conseils']['image'], array('700','900'), '', array('class' => 'img-main') ); ?>
         <?= $_fields['conseils']['content']; ?>
-      </div>
-    </section>
-
-    <section class="section section-legal">
-      <h2 class="h1">Mentions légales</h2>
-      <div class="section-3-col">
-        <?php echo get_field('legal_text'); ?>
       </div>
     </section>
 

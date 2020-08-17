@@ -1,4 +1,6 @@
 button {
+  font-family: $font-family;
+
   &:focus {
     outline: none;
   }

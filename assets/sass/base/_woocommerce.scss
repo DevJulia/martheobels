@@ -1,7 +1,114 @@
-/* @media (min-width: 768px) {
-  .site-content .col-full {
-    max-width: none;
-    padding: 0;
+@media (min-width: 768px) {
+  .col-full {
+    max-width: 70.4989378333em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2.617924em;
+    box-sizing: content-box;
   }
 }
- */
+
+//Product categories widget
+.widget-area .widget.widget_product_categories {
+  a:not(.button):not(.components-button) {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    color: $black;
+  }
+
+  ul li {
+    padding-left: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .current-cat-parent {
+    a:not(.button):not(.components-button) {
+      color: $primary;
+    }
+  }
+
+  .current-cat {
+    color: $primary;
+
+    &.cat-parent {
+      .children .cat-item {
+        color: $black;
+  
+        a {
+          color: $black;
+          font-weight: $font-weight-regular !important;
+        }
+      }
+    }
+
+    a:not(.button):not(.components-button) {
+      color: $primary;
+      font-weight: $font-weight-bold !important;
+    }
+
+    &::before {
+      background: $primary !important;
+    }
+  }
+
+  .cat-parent {
+    .children {
+      .cat-item {
+        a:not(.button):not(.components-button) {
+          font-weight: $font-weight-regular;
+        }
+      }
+
+      li {
+        padding-left: 1.8em;
+
+        &::before {
+          display: inline-block;
+          opacity: 1;
+          content: "";
+          width: 1.8em;
+          height: 2px;
+          background: $black;
+          float: none;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+.woocommerce-products-header__title {
+  font-size: $font-size-2xl;
+  line-height: 1.2;
+  font-family: $font-family-serif;
+  margin-bottom: 1em;
+}
+
+.storefront-breadcrumb {
+  margin: 0 0 1em;
+}
+
+.woocommerce-breadcrumb {
+  color: $gray-400;
+
+  a {
+    text-decoration: none;
+    color: $gray-400;
+  }
+
+  a:first-of-type::before {
+    display: none;
+  }
+}
+
+.pswp__bg {
+  background: rgba(0,0,0,0.8); 
+}
+
+.pswp__caption__center {
+  text-align: center;
+}

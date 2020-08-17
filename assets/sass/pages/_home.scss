@@ -37,7 +37,7 @@
 
       .text {
         margin-top: 10px;
-        font-size: 0.9rem;
+        font-size: $font-size-sm;
         font-weight: $font-weight-medium;
       }
     }
@@ -119,7 +119,7 @@
         li {
           flex: 1;
 
-          &:last-child {
+/*           &:last-child {
             button {
               font-weight: 300;
 
@@ -127,13 +127,13 @@
                 font-weight: bold;
               }
             }
-          }
+          } */
         }
       }
 
       button {
         background: none;
-        font-size: 0.8rem;
+        font-size: $font-size-xs;
         text-transform: uppercase;
         width: 100%;
         padding: 0;
@@ -469,7 +469,7 @@
       .title {
         font-family: $font-family-serif;
         font-weight: $font-weight-regular;
-        font-size: 2rem;
+        font-size: $font-size-2xl;
         margin-bottom: 1em;
         text-transform: initial;
       }
@@ -516,7 +516,7 @@
 
         .subtitle {
           margin-top: 0.7em;
-          font-size: 0.9em;
+          font-size: $font-size-sm;
           text-transform: initial;
           font-weight: $font-weight-regular;
         }
@@ -633,7 +633,7 @@
   
   .section-legal {
     width: 95vw;
-    font-size: 0.9rem;
+    font-size: $font-size-sm;
 
     @media screen and (max-width: $min-width-sly) {
       width: 100%;
@@ -643,5 +643,11 @@
   // Fix bug with last sly section
   .section-last {
     width: 0px;
+  }
+
+  @media screen and (max-width: 1800px) {
+    .attachment-woocommerce_thumbnail {
+      width: 320px;
+    }
   }
 }

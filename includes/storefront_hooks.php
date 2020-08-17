@@ -11,6 +11,8 @@ add_action('init', function() {
     add_action( 'storefront_header', 'mobels_primary_navigation', 50);
 
     remove_action( 'storefront_footer', 'storefront_credit', 20);
+    remove_action( 'woocommerce_single_product_summary', 'storefront_edit_post_link', 60);
+
 
     /*
     remove_action( 'storefront_post_content_before', 'storefront_post_thumbnail', 10 );
@@ -22,26 +24,7 @@ add_action('init', function() {
     remove_action( 'storefront_before_content', 'woocommerce_breadcrumb', 10 );
     remove_action( 'storefront_before_content', 'woocommerce_breadcrumb', 10 );
     */
-
-    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
 });
-
-add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
-function woo_new_product_tab( $tabs ) {
-// Adds the new tab
-    $tabs['desc_tab'] = array(
-        'title'     => __( 'Additional Information', 'woocommerce' ),
-        'priority'  => 50,
-        'callback'  => 'woo_new_product_tab_content'
-    );
-
-    return $tabs;
-}
-
-function woo_new_product_tab_content() {
-    // The new tab content
-    echo '<p>Lorem Ipsum</p>';
-}
 
 add_action('storefront_after_footer', 'browser_sync_script');
 function browser_sync_script()
@@ -149,9 +132,26 @@ add_filter( 'woocommerce_get_image_size_thumbnail', function( $size ) {
  * Sidebar on single product page
  */
 add_action( 'get_header', 'mobels_remove_storefront_sidebar' );
- 
 function mobels_remove_storefront_sidebar() {
    if ( is_product() ) {
       remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
    }
 }
+
+add_action( 'woocommerce_before_single_product_summary', 'mobels_single_product_wrapper', 15);
+function mobels_single_product_wrapper() {
+    echo '<div class="single-product-wrapper">';
+    echo '<div class="single-product-info-wrapper">';
+}
+
+add_action( 'woocommerce_after_single_product_summary', 'mobels_product_sidebar', 5);
+function mobels_product_sidebar() {
+    global $post;
+    echo '</div>';
+    echo '<div class="single-product-sidebar">';
+    echo '<h2>Ajouter un accessoire</h2>';
+    print_r( get_post_meta( $post->ID, '_upsizing_products_ids', true ) );
+    echo '</div>';
+    echo '</div>'; //close product wrapper
+}
+

@@ -20,7 +20,7 @@
         },
         {
             "key": "field_5ef9fbeea025c",
-            "label": "ACCUEIL",
+            "label": "HISTOIRE\/CONCEPT",
             "name": "",
             "type": "accordion",
             "instructions": "",
@@ -220,7 +220,7 @@
         },
         {
             "key": "field_5ef9ff9aa23ff",
-            "label": "BOUTIQUE",
+            "label": "COLLECTION",
             "name": "",
             "type": "accordion",
             "instructions": "",
@@ -552,42 +552,6 @@
             ]
         },
         {
-            "key": "field_5efa03992aa51",
-            "label": "MENTIONS LEGALES",
-            "name": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 0,
-            "multi_expand": 0,
-            "endpoint": 0
-        },
-        {
-            "key": "field_5efa03a72aa52",
-            "label": "Texte",
-            "name": "legal_text",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
             "key": "field_5efb325a1bc68",
             "label": "Fin accordéon",
             "name": "",
@@ -701,5 +665,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1593530362
+    "modified": 1597657518
 }
