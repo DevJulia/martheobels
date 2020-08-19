@@ -69,7 +69,7 @@
     }
 
     .woocommerce-product-gallery.woocommerce-product-gallery--columns-4 .flex-control-thumbs li {
-      width: 21%;
+      width: 22%;
       float: left;
       margin-right: 4%;
     }
@@ -94,6 +94,29 @@
       text-align: center;
       font-size: $font-size-2xl;
       padding: 4rem;
+    }
+  }
+
+  @media screen and (max-width: 950px) {
+    .single-product-wrapper {
+      flex-wrap: wrap;
+
+      .single-product-info-wrapper {
+        width: 100%;
+      }
+  
+      .single-product-sidebar {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    div.product .woocommerce-product-gallery img {
+      @include push--auto;
+    }
+
+    ul.products li.product .attachment-woocommerce_thumbnail {
+      @include push--auto;
     }
   }
 }

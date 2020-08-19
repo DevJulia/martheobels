@@ -43,3 +43,13 @@
 .dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input {
   border: 2px solid $black;
 }
+
+.dgwt-wcas-search-wrapp {
+  min-width: auto;
+}
+
+.archive {
+  ul.products li.product .attachment-woocommerce_thumbnail {
+    @include push--auto;
+  }
+}

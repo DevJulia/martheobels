@@ -104,6 +104,10 @@ $(document).ready(function () {
 
   var width = $('.single-product .square-text').outerWidth();
   $('.single-product .square-text').css('height', width + 'px');
+  $(window).on('resize', function () {
+    var width = $('.single-product .square-text').outerWidth();
+    $('.single-product .square-text').css('height', width + 'px');
+  });
 });
 
 /***/ }),
