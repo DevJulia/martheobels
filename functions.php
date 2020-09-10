@@ -62,7 +62,7 @@ function ea_disable_gutenberg( $can_edit, $post_type ) {
 add_filter( 'gutenberg_can_edit_post_type', 'ea_disable_gutenberg', 10, 2 );
 add_filter( 'use_block_editor_for_post_type', 'ea_disable_gutenberg', 10, 2 );
 
-// show_admin_bar(false);
+show_admin_bar(false);
 
 function get_img_url($image)
 {

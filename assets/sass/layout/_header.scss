@@ -24,8 +24,35 @@
     }
 
     .storefront-primary-navigation {
-      display: flex;
-      align-items: center;
+      .primary-nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .main-menu-container {
+        text-align: right;
+        margin-top: 1em;
+        color: $primary;
+
+        .menu-item {
+          display: inline-block;
+          text-transform: uppercase;
+          font-size: $font-size-sm;
+
+          &.current-menu-item {
+            a {
+              color: $primary;
+              font-weight: $font-weight-bold;
+            }
+          }
+
+          &:last-child {
+            .separator {
+              display: none;
+            }
+          }
+        }
+      }
 
       &::before,
       &::after {

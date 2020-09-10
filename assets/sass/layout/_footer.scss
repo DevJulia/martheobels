@@ -1,0 +1,24 @@
+.my-site-footer {
+  margin-bottom: 20px;
+  padding: 0 80px;
+
+  .footer-menu-container {
+    text-align: right;
+
+    .menu-item {
+      display: inline-block;
+      font-size: $font-size-xs;
+      color: $gray-400;
+
+      a {
+        color: $gray-400;
+      }
+
+      &:last-child {
+        .separator {
+          display: none;
+        }
+      }
+    }
+  }
+}

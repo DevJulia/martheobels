@@ -6,9 +6,12 @@
 add_action('init', function() {
     remove_action( 'storefront_header', 'storefront_product_search', 40);
     remove_action( 'storefront_header', 'storefront_primary_navigation', 50);
+    remove_action( 'storefront_header', 'storefront_secondary_navigation', 30);
+
     remove_action( 'storefront_header', 'storefront_header_container', 0);
     remove_action( 'storefront_header', 'storefront_header_container_close', 41);
     add_action( 'storefront_header', 'mobels_primary_navigation', 50);
+    add_action( 'storefront_header', 'mobels_menu', 65 );
 
     remove_action( 'storefront_footer', 'storefront_credit', 20);
     remove_action( 'woocommerce_single_product_summary', 'storefront_edit_post_link', 60);
@@ -108,16 +111,26 @@ if ( ! function_exists( 'storefront_cart_link' ) ) {
 
 function mobels_primary_navigation() {
     ?>
-    <a href="mailto:<?= get_field('contact_email','options'); ?>"><?php the_field('contact_email', 'options'); ?></a>
+    <div class="primary-nav">
+        <a href="mailto:<?= get_field('contact_email','options'); ?>"><?php the_field('contact_email', 'options'); ?></a>
 
-    <div class="social-icons-block">
-        <a href="<?= get_field('facebook', 'options'); ?>" target="_blank"><?php print_svg(get_img_url('icon-facebook.svg')) ?></a>
-        <a href="<?= get_field('instagram', 'options'); ?>" target="_blank"><?php print_svg(get_img_url('icon-instagram.svg')) ?></a>
-    </div>
+        <div class="social-icons-block">
+            <a href="<?= get_field('facebook', 'options'); ?>" target="_blank"><?php print_svg(get_img_url('icon-facebook.svg')) ?></a>
+            <a href="<?= get_field('instagram', 'options'); ?>" target="_blank"><?php print_svg(get_img_url('icon-instagram.svg')) ?></a>
+        </div>
 
-    <a href="<?= get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>'"><?php print_svg(get_img_url('icon-account.svg')); ?></a>
+        <a href="<?= get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>'"><?php print_svg(get_img_url('icon-account.svg')); ?></a>
 
     <?php
+}
+
+function mobels_menu() {
+    echo '</div>'; //.primary-nav
+    wp_nav_menu( array(
+        'theme_location'  => 'primary',
+        'container_class' => 'main-menu-container',
+        'after'           => '<span class="separator"> |</span>'
+    ) );
 }
 
 add_filter( 'woocommerce_get_image_size_thumbnail', function( $size ) {

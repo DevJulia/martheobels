@@ -14,6 +14,16 @@
 
 	<?php do_action( 'storefront_before_footer' ); ?>
 
+	<footer class="my-site-footer">
+		<?php
+		wp_nav_menu( array(
+			'theme_location'	=> 'secondary',
+			'container_class' => 'footer-menu-container',
+			'after'						=> '<span class="separator"> |</span>'
+		) );
+		?>
+	</footer>
+
 	<?php do_action( 'storefront_after_footer' ); ?>
 
 </div><!-- #page -->

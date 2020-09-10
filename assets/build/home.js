@@ -119,12 +119,10 @@ function home() {
     if (scrollingDown) {
       $scene.addClass('is-over');
       $(window).off("mousewheel DOMMouseScroll touchmove keydown", slideSplash);
-      createSly();
-    } else {
-      $scene.removeClass('is-over');
     }
   }
 
+  createSly();
   $(window).on("mousewheel DOMMouseScroll touchmove keydown", slideSplash);
 }
 

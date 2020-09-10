@@ -13,4 +13,3 @@ $(document).ready(function() {
     $('.single-product .square-text').css('height', width + 'px');
   })
 });
-

@@ -11,6 +11,7 @@
   }
 
   .deck {
+    // display: none;
     width: 100%;
     min-height: 100vh;
     position: absolute;
@@ -85,7 +86,7 @@
   .site-content .col-full {
     max-width: none;
     padding: 0;
-    height: calc(100vh - #{$headerHeight});
+    height: calc(100vh - #{$headerHeight} - 43px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -101,8 +102,7 @@
   /* Scrollbar */
   .navigation {
     overflow: hidden;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 
     nav {
       width: calc(#{$scrollbar-width} * 1.05);
@@ -228,7 +228,7 @@
       padding-top: $section-padding;
       padding-right: $section-padding;
       padding-left: $section-padding;
-      padding-bottom: 40px !important;
+      padding-bottom: 20px !important;
       overflow-y: auto;
     }
 
@@ -412,6 +412,10 @@
       .product {
         padding: 0 35px;
         margin-bottom: 0;
+
+        .price {
+          margin-bottom: 0;
+        }
       }
     }
 
