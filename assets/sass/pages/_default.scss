@@ -1,0 +1,16 @@
+.page-template-default {
+  strong {
+    font-weight: $font-weight-bold;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+  }
+
+  h1 {
+    font-family: $font-family-serif;
+    font-size: $font-size-2xl;
+    margin-bottom: 1em;
+  }
+}

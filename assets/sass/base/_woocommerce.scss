@@ -15,6 +15,11 @@
     text-transform: uppercase;
     font-weight: $font-weight-bold;
     color: $black;
+    transition: color .3s;
+
+    &:hover {
+      color: $primary;
+    }
   }
 
   ul li {
@@ -111,4 +116,31 @@
 
 .pswp__caption__center {
   text-align: center;
+}
+
+//MESSAGES
+.woocommerce-message {
+  background-color: $gray-300;
+  color: $black;
+  margin-bottom: .5em;
+  padding: 1em 2em 1em 2em;
+  border-left: 0;
+
+  &:last-child {
+    margin-bottom: 2.617924em;
+  }
+
+  &::before {
+    display: none;
+  }
+
+  a {
+    color: $primary;
+    font-weight: $font-weight-bold;
+
+    &:hover {
+      opacity: 1;
+      color: $primary;
+    }
+  }
 }

@@ -160,11 +160,32 @@ function mobels_single_product_wrapper() {
 add_action( 'woocommerce_after_single_product_summary', 'mobels_product_sidebar', 5);
 function mobels_product_sidebar() {
     global $post;
-    echo '</div>';
-    echo '<div class="single-product-sidebar">';
-    echo '<h2>Ajouter un accessoire</h2>';
-    print_r( get_post_meta( $post->ID, '_upsizing_products_ids', true ) );
-    echo '</div>';
-    echo '</div>'; //close product wrapper
+    $posts = get_post_meta( $post->ID, '_upsizing_products_ids', true );
+    if ($posts) {
+        echo '</div>';
+        echo '<div class="single-product-sidebar">';
+        echo '<h2>Ajouter un accessoire</h2>';
+
+        foreach ($posts as $post) {
+            $product = wc_get_product( $post );
+            ?>
+
+            <div class="product-acc">
+                <a class="acc--image" href="<?php echo $product->get_permalink();?>">
+                    <?php echo $product->get_image(); ?>
+                </a>
+
+                <div class="acc--text">
+                    <a class="title" href="<?php echo $product->get_permalink();?>"><?php echo $product->get_name(); ?></a>
+                    <p><?php echo $product->get_short_description(); ?></p>
+                </div>
+            </div>
+
+            <?php
+        }
+    
+        echo '</div>';
+        echo '</div>'; //close product wrapper
+    }
 }
 

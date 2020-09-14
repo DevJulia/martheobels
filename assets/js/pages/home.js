@@ -43,7 +43,7 @@ function createSly() {
     itemNav: 'basic',
     slidee: '.slidee',
     smart: 1,
-    mouseDragging: 1,
+    mouseDragging: 0,
     // touchDragging: 1,
     releaseSwing: 1,
     startAt: 0,

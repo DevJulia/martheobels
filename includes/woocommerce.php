@@ -16,7 +16,20 @@ add_action('init', function() {
     remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 });
 
-add_filter( 'wc_add_to_cart_message', 'custom_add_to_cart_message' );
+// Replace add to cart button by a linked button to the product in Shop and archives pages
+add_filter( 'woocommerce_loop_add_to_cart_link', 'replace_loop_add_to_cart_button', 10, 2 );
+function replace_loop_add_to_cart_button( $button, $product  ) {
+    // Not needed for variable products
+    if( $product->is_type( 'variable' ) ) return $button;
+
+    // Button text here
+    $button_text = __( "View product", "woocommerce" );
+
+    return '<a class="view_product_button button" href="' . $product->get_permalink() . '">' . $button_text . '</a>';
+}
+
+
+add_filter( 'wc_add_to_cart_message_html', 'custom_add_to_cart_message' );
 function custom_add_to_cart_message() {
   global $woocommerce;
 
@@ -46,7 +59,7 @@ function woocom_linked_products_data_custom_field() {
     global $woocommerce, $post;
 ?>
 <p class="form-field">
-    <label for="upsizing_products"><?php _e( 'Upsizing Product', 'woocommerce' ); ?></label>
+    <label for="upsizing_products"><?php _e( 'Accessoires liés', 'woocommerce' ); ?></label>
     <select class="wc-product-search" multiple="multiple" style="width: 50%;" id="upsizing_products" name="upsizing_products[]" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" data-exclude="<?php echo intval( $post->ID ); ?>">
         <?php
             $product_ids = get_post_meta( $post->ID, '_upsizing_products_ids', true );

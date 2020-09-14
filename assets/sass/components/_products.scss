@@ -7,10 +7,12 @@ ul.products {
       display: none;
     }
 
-    .add_to_cart_button {
+    .add_to_cart_button,
+    .view_product_button {
       position: absolute;
       top: 5%;
       transform: translate(-50%, -150%);
+      min-width: 60%;
       opacity: 0;
       transition: all 0.3s ease;
     }
@@ -35,7 +37,8 @@ ul.products {
     }
 
     &:hover {
-      .add_to_cart_button {
+      .add_to_cart_button,
+      .view_product_button {
         transform: translate(-50%, 10%);
         opacity: 1;
       }

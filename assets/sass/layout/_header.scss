@@ -39,7 +39,12 @@
           text-transform: uppercase;
           font-size: $font-size-sm;
 
-          &.current-menu-item {
+          a {
+            color: $primary;
+          }
+
+          &.current-menu-item,
+          &.current_page_parent {
             a {
               color: $primary;
               font-weight: $font-weight-bold;
