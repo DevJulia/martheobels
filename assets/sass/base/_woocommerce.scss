@@ -119,7 +119,9 @@
 }
 
 //MESSAGES
-.woocommerce-message {
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-info {
   background-color: $gray-300;
   color: $black;
   margin-bottom: .5em;
@@ -134,13 +136,26 @@
     display: none;
   }
 
-  a {
+  a,
+  .button {
     color: $primary;
     font-weight: $font-weight-bold;
 
     &:hover {
       opacity: 1;
       color: $primary;
+    }
+  }
+}
+
+ul.woocommerce-error {
+  list-style: disc;
+
+  li {
+    margin: 0.5em 0;
+
+    &:only-child {
+      list-style: none;
     }
   }
 }

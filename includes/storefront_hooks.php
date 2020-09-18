@@ -119,7 +119,7 @@ function mobels_primary_navigation() {
             <a href="<?= get_field('instagram', 'options'); ?>" target="_blank"><?php print_svg(get_img_url('icon-instagram.svg')) ?></a>
         </div>
 
-        <a href="<?= get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>'"><?php print_svg(get_img_url('icon-account.svg')); ?></a>
+        <a href="<?= get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"><?php print_svg(get_img_url('icon-account.svg')); ?></a>
 
     <?php
 }

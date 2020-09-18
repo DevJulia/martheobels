@@ -97,3 +97,21 @@ function remove_image_zoom_support() {
     remove_theme_support( 'wc-product-gallery-zoom' );
 }
 add_action( 'wp', 'remove_image_zoom_support', 100 );
+
+//Add review order title
+function review_order_payment_title() {
+    echo '<h3>Règlement</h3>';
+}
+add_action('woocommerce_review_order_before_payment', 'review_order_payment_title', 30);
+
+function my_account_title() {
+    echo '<h1>Mon compte</h1>';
+}
+add_action('woocommerce_before_account_navigation', 'my_account_title', 30);
+add_action('woocommerce_before_customer_login_form', 'my_account_title', 30);
+
+add_filter( 'woocommerce_account_menu_items', 'custom_remove_downloads_my_account', 999 ); 
+function custom_remove_downloads_my_account( $items ) {
+    unset($items['downloads']);
+    return $items;
+}

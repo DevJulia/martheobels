@@ -35,3 +35,7 @@ textarea:focus,
 button:focus {
   outline: none;
 }
+
+textarea {
+  font-family: $font-family;
+}
