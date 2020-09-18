@@ -279,6 +279,12 @@ ul.products li.product:hover .view_product_button {
 .my-site-footer .footer-menu-container .menu-item:last-child .separator {
   display: none; }
 
+.my-site-footer .footer-menu-container .menu-item.current-menu-item {
+  font-weight: 700; }
+
+.my-site-footer .footer-menu-container .menu-item.current-menu-item .separator {
+  font-weight: 400; }
+
 .woocommerce-active .site-header {
   display: flex;
   justify-content: space-between;
