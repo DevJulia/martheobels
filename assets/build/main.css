@@ -382,7 +382,8 @@ ul.products li.product:hover .view_product_button {
 
 .woocommerce-active .site-header .widget_shopping_cart {
   border: 2px solid #3300CC;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  background: #fff; }
 
 .woocommerce-active .site-header .widget_shopping_cart a {
   font-weight: 700; }
@@ -718,6 +719,9 @@ body:not(.home) .site-content {
   font-size: 2rem;
   margin-bottom: 1em; }
 
+.woocommerce-account .woocommerce-MyAccount-content h2 {
+  font-size: 1.1rem; }
+
 .woocommerce-account input[type=text],
 .woocommerce-account input[type=number],
 .woocommerce-account input[type=email],
@@ -786,6 +790,48 @@ body:not(.home) .site-content {
   flex-direction: column;
   padding: 0.5em;
   line-height: 1.2; }
+
+.woocommerce-account .woocommerce-orders-table {
+  text-transform: uppercase;
+  font-weight: 700; }
+
+.woocommerce-account .woocommerce-orders-table thead th {
+  font-weight: 700; }
+
+.woocommerce-account .woocommerce-orders-table th,
+.woocommerce-account .woocommerce-orders-table td,
+.woocommerce-account .woocommerce-orders-table tr:nth-child(2n) td {
+  background: none; }
+
+.woocommerce-account .woocommerce-orders-table tr.woocommerce-orders-table__row {
+  border: 1px solid #CACACA; }
+
+.woocommerce-account .woocommerce-orders-table .woocommerce-orders-table__cell-order-total {
+  text-transform: initial;
+  font-weight: 400; }
+
+.woocommerce-account .woocommerce-orders-table .woocommerce-orders-table__cell-order-total .amount {
+  text-transform: uppercase;
+  font-weight: 700; }
+
+.woocommerce-account .woocommerce-orders-table .woocommerce-button {
+  margin-top: 0;
+  background: none;
+  color: #000; }
+
+.woocommerce-account .woocommerce-Address-title h3 {
+  text-transform: uppercase;
+  font-weight: 700; }
+
+.woocommerce-account .woocommerce-Address {
+  margin-bottom: 1rem; }
+
+.woocommerce-account .woocommerce-EditAccountForm legend {
+  text-transform: uppercase; }
+
+.woocommerce-account .woocommerce-EditAccountForm fieldset legend,
+.woocommerce-account .woocommerce-EditAccountForm fieldset {
+  background: none; }
 
 @media screen and (max-width: 700px) {
   .woocommerce-account .woocommerce-MyAccount-navigation {
@@ -951,6 +997,63 @@ body:not(.home) .site-content {
 
 .woocommerce-checkout .select2-container--default .select2-selection--single .select2-selection__rendered {
   line-height: 40px; }
+
+.woocommerce ul.order_details::before,
+.woocommerce ul.order_details::after {
+  display: none; }
+
+.woocommerce ul.order_details {
+  background: none; }
+
+.woocommerce ul.woocommerce-order-overview > li {
+  border-bottom: 0; }
+
+.woocommerce ul.woocommerce-order-overview li {
+  padding: 1em 0;
+  text-transform: initial;
+  font-size: 1rem; }
+
+.woocommerce ul.woocommerce-order-overview li strong {
+  display: inline;
+  font-size: 1rem;
+  font-weight: 400; }
+
+.woocommerce .woocommerce-order-details__title {
+  margin-bottom: 1em; }
+
+.woocommerce .woocommerce-table--order-details {
+  background: none;
+  border: 2px solid #000;
+  text-transform: uppercase; }
+
+.woocommerce .woocommerce-table--order-details th,
+.woocommerce .woocommerce-table--order-details td,
+.woocommerce .woocommerce-table--order-details tr:nth-child(2n) td {
+  background: none; }
+
+.woocommerce .woocommerce-table--order-details tfoot {
+  border-top: 2px solid #000; }
+
+.woocommerce .woocommerce-customer-details {
+  margin-top: 3rem; }
+
+.woocommerce .woocommerce-customer-details address {
+  line-height: 1.2; }
+
+.woocommerce-form-track-order input {
+  box-shadow: none;
+  border: 1px solid #7A7A7A;
+  background: none;
+  padding: 0.3em; }
+
+.woocommerce-form-track-order label {
+  font-style: italic;
+  color: #7A7A7A; }
+
+.woocommerce-form-track-order .button {
+  background: #000;
+  color: #fff;
+  text-transform: uppercase; }
 
 .page-template-homepage {
   /* Splash screen */

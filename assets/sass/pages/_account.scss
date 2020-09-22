@@ -1,4 +1,7 @@
 .woocommerce-account {
+  .woocommerce-MyAccount-content h2 {
+    font-size: $font-size-lg;
+  }
   //Login form
   input[type=text],
   input[type=number],
@@ -85,6 +88,63 @@
       flex-direction: column;
       padding: 0.5em;
       line-height: 1.2;
+    }
+  }
+
+  .woocommerce-orders-table {
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+
+    thead th {
+      font-weight: $font-weight-bold;
+    }
+
+    th,
+    td,
+    tr:nth-child(2n) td {
+      background: none;
+    }
+
+    tr.woocommerce-orders-table__row {
+      border: 1px solid $gray-border;
+    }
+
+    .woocommerce-orders-table__cell-order-total {
+      text-transform: initial;
+      font-weight: $font-weight-regular;
+
+      .amount {
+        text-transform: uppercase;
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    .woocommerce-button {
+      margin-top: 0;
+      background: none;
+      color: $black;
+    }
+  }
+
+  .woocommerce-Address-title {
+    h3 {
+      text-transform: uppercase;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  .woocommerce-Address {
+    margin-bottom: 1rem;
+  }
+
+  .woocommerce-EditAccountForm {
+    legend {
+      text-transform: uppercase;
+    }
+
+    fieldset legend,
+    fieldset {
+      background: none;
     }
   }
 

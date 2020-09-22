@@ -115,3 +115,9 @@ function custom_remove_downloads_my_account( $items ) {
     unset($items['downloads']);
     return $items;
 }
+
+
+function order_received_title() {
+    echo '<h1>Confirmation de votre commande</h1>';
+}
+add_action('woocommerce_before_thankyou', 'order_received_title', 10);
