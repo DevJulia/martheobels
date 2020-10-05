@@ -538,7 +538,8 @@ body:not(.home) .site-content {
 .single-product div.product .cart button.single_add_to_cart_button {
   background-color: #000;
   border-color: #000;
-  padding: 0.7286em 1.41575em; }
+  padding: 0.7286em 1.41575em;
+  text-transform: uppercase; }
 
 .product-template-default div.product .cart input[type=number],
 .single-product div.product .cart input[type=number] {
