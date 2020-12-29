@@ -1,4 +1,8 @@
 .woocommerce-checkout {
+  .required {
+    color: $primary;
+  }
+
   h3,
   h3#order_review_heading {
     font-weight: $font-weight-bold;
@@ -89,14 +93,19 @@
       display: block !important;
     }
 
-    .wc_payment_method {
+    .wc_payment_method { 
+      &.payment_method_paypal {
+        img {
+          display: none;
+        }
+      }
+
       input:checked + label:before {
         content: '\f058' !important;
       }
 
       label {
         font-weight: $font-weight-bold;
-        text-transform: uppercase;
 
         &::before {
           color: $gray-border;

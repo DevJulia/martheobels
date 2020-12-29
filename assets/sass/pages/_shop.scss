@@ -5,6 +5,12 @@
   font-weight: $font-weight-bold;
 }
 
+.widget .product-categories {
+  ul {
+    margin-left: 0;
+  }
+}
+
 .storefront-sorting {
   .woocommerce-result-count,
   .woocommerce-pagination {

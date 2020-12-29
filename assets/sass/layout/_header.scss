@@ -134,6 +134,12 @@
         font-weight: $font-weight-bold;
       }
 
+      .quantity {
+        display: inline-block;
+        padding-top: 0.5em;
+        font-size: $font-size-xs;
+      }
+
       li,
       .total,
       .buttons {

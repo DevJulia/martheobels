@@ -121,3 +121,14 @@ function order_received_title() {
     echo '<h1>Confirmation de votre commande</h1>';
 }
 add_action('woocommerce_before_thankyou', 'order_received_title', 10);
+
+//Edit product categories widgets
+// define the woocommerce_product_categories_widget_args callback 
+function filter_woocommerce_product_categories_widget_args( $list_args ) { 
+    // make filter magic happen here... 
+    $list_args['title_li'] = '<ul><li><a href="'. get_permalink( wc_get_page_id( 'shop' ) ) .'">Tous les articles</a></li></ul>';
+    return $list_args; 
+}; 
+         
+// add the filter 
+add_filter( 'woocommerce_product_categories_widget_args', 'filter_woocommerce_product_categories_widget_args', 10, 1 ); 

@@ -388,6 +388,11 @@ ul.products li.product:hover .view_product_button {
 .woocommerce-active .site-header .widget_shopping_cart a {
   font-weight: 700; }
 
+.woocommerce-active .site-header .widget_shopping_cart .quantity {
+  display: inline-block;
+  padding-top: 0.5em;
+  font-size: 0.8rem; }
+
 .woocommerce-active .site-header .widget_shopping_cart li,
 .woocommerce-active .site-header .widget_shopping_cart .total,
 .woocommerce-active .site-header .widget_shopping_cart .buttons {
@@ -417,6 +422,9 @@ body:not(.home) .site-content {
   border-bottom: 0;
   text-transform: uppercase;
   font-weight: 700; }
+
+.widget .product-categories ul {
+  margin-left: 0; }
 
 .storefront-sorting .woocommerce-result-count,
 .storefront-sorting .woocommerce-pagination {
@@ -847,6 +855,9 @@ body:not(.home) .site-content {
   color: #fff;
   text-transform: uppercase; }
 
+.woocommerce-checkout .required {
+  color: #3300CC; }
+
 .woocommerce-checkout h3,
 .woocommerce-checkout h3#order_review_heading {
   font-weight: 700;
@@ -921,14 +932,17 @@ body:not(.home) .site-content {
 .woocommerce-checkout #payment .payment_box {
   display: block !important; }
 
+.woocommerce-checkout .woocommerce-checkout-payment .wc_payment_method.payment_method_paypal img,
+.woocommerce-checkout #payment .wc_payment_method.payment_method_paypal img {
+  display: none; }
+
 .woocommerce-checkout .woocommerce-checkout-payment .wc_payment_method input:checked + label:before,
 .woocommerce-checkout #payment .wc_payment_method input:checked + label:before {
   content: '\f058' !important; }
 
 .woocommerce-checkout .woocommerce-checkout-payment .wc_payment_method label,
 .woocommerce-checkout #payment .wc_payment_method label {
-  font-weight: 700;
-  text-transform: uppercase; }
+  font-weight: 700; }
 
 .woocommerce-checkout .woocommerce-checkout-payment .wc_payment_method label::before,
 .woocommerce-checkout #payment .wc_payment_method label::before {
