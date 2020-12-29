@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="86" height="56" viewBox="0 0 86 56">
+  <g id="Groupe_94" data-name="Groupe 94" transform="translate(-943 -816)">
+    <path id="Polygone_3" data-name="Polygone 3" d="M3.826,0,7.652,4.051H0Z" transform="matrix(-0.017, 1, -1, -0.017, 1018.504, 855.071)" fill="#fff"/>
+    <g id="Rectangle_14" data-name="Rectangle 14" transform="translate(944 847)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+      <rect width="24" height="24" rx="3" stroke="none"/>
+      <rect x="-0.5" y="-0.5" width="25" height="25" rx="3.5" fill="none"/>
+    </g>
+    <g id="Rectangle_17" data-name="Rectangle 17" transform="translate(1003 847)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+      <rect width="25" height="24" rx="2" stroke="none"/>
+      <rect x="-0.5" y="-0.5" width="26" height="25" rx="2.5" fill="none"/>
+    </g>
+    <g id="Groupe_93" data-name="Groupe 93" transform="translate(-8 4)" opacity="0.441">
+      <g id="Rectangle_18" data-name="Rectangle 18" transform="translate(982 813)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+        <rect width="24" height="25" rx="3" stroke="none"/>
+        <rect x="-0.5" y="-0.5" width="25" height="26" rx="3.5" fill="none"/>
+      </g>
+      <path id="Polygone_1" data-name="Polygone 1" d="M3.5,0,7,4H0Z" transform="translate(991 824)" fill="#fff"/>
+      <path id="Tracé_68" data-name="Tracé 68" d="M3.826,0,7.652,4.051H0Z" transform="translate(998.652 857.751) rotate(180)" fill="#fff"/>
+      <g id="Rectangle_21" data-name="Rectangle 21" transform="translate(982 842)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+        <rect width="24" height="25" rx="3" stroke="none"/>
+        <rect x="-0.5" y="-0.5" width="25" height="26" rx="3.5" fill="none"/>
+      </g>
+    </g>
+    <path id="Polygone_4" data-name="Polygone 4" d="M3.826,0,7.652,4.051H0Z" transform="matrix(0.017, -1, 1, 0.017, 953.321, 862.651)" fill="#fff"/>
+  </g>
+</svg>

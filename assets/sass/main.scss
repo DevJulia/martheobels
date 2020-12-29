@@ -9,10 +9,14 @@
 @import
   'base/reset',
   'base/base',
+  'base/woocommerce',
   'base/helpers';
 
 // 3. Components
-
+@import
+  'components/buttons',
+  'components/inputs',
+  'components/products';
 
 // 4. Layout
 @import
@@ -21,4 +25,12 @@
 
 // 5. Page-specific styles
 @import
-  'pages/common';
+  'pages/common',
+  'pages/shop',
+  'pages/product',
+  'pages/cart',
+  'pages/default',
+  'pages/account',
+  'pages/checkout',
+  'pages/orders',
+  'pages/home';

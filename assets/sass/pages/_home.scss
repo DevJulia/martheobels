@@ -1,0 +1,680 @@
+.page-template-homepage {
+  /* Splash screen */
+  $transition-time: 2s;
+  $transition-ease: ease;
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+  }
+
+  .deck {
+    // display: none;
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: hidden;
+
+    .deck--navigation {
+      position: absolute;
+      z-index: 20;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      color: $white;
+      text-align: center;
+      margin-bottom: 20px;
+      transition: opacity 0.3s;
+
+      svg {
+        height: 50px;
+        margin: 0 5px;
+      }
+
+      .text {
+        margin-top: 10px;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+      }
+    }
+
+    .logo {
+      z-index: 20;
+      color: #fff;
+      transition: opacity 0.3s;
+    }
+    
+    &:before,
+    &:after {
+      content: '';
+      width: 100%;
+      height: 50%;
+      position: absolute;
+      left: 0;
+      background: $primary;
+      transition: transform $transition-time $transition-ease;
+    }
+    &:before {
+      top: 0;
+    }
+    &:after {
+      bottom: 0;
+    }
+    &.is-over {
+      pointer-events: none;
+      
+      &:before {
+        transform: translate3d(-200vw, 0, 0);
+      }
+      &:after {
+        transform: translate3d(200vw, 0, 0);
+      }
+
+      .logo,
+      .deck--navigation {
+        opacity: 0;
+      }
+    }
+  }
+
+  /* Full page layout */
+  .site-content .col-full {
+    max-width: none;
+    padding: 0;
+    height: calc(100vh - #{$headerHeight} - 43px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &::after,
+    &::before,
+    .woocommerce {
+      display: none;
+    }
+  }
+
+  $scrollbar-width: 670px;
+  /* Scrollbar */
+  .navigation {
+    overflow: hidden;
+    padding-bottom: 10px;
+
+    nav {
+      width: calc(#{$scrollbar-width} * 1.05);
+      @include push--auto;
+
+      ul {
+        position: relative;
+        width: 120%;
+        left: -10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        li {
+          flex: 1;
+
+/*           &:last-child {
+            button {
+              font-weight: 300;
+
+              &.active {
+                font-weight: bold;
+              }
+            }
+          } */
+        }
+      }
+
+      button {
+        background: none;
+        font-size: $font-size-xs;
+        text-transform: uppercase;
+        width: 100%;
+        padding: 0;
+        font-weight: bold;
+        transition: all .4s;
+
+        &.active,
+        &:hover {
+          color: $primary;
+          font-weight: bold;
+        }
+      }
+    }
+
+    @media screen and (max-width: $min-width-sly) {
+      display: none;
+    }
+  }
+
+  .scrollbar {
+    width: $scrollbar-width;
+    height: 1px;
+    background: #ccc;
+    line-height: 0;
+    position: relative;
+    margin-top: 10px;
+
+    @include push--auto;
+
+    .handle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: $primary;
+      cursor: pointer;
+      position: relative;
+      top: -5px;
+      left: 1px;
+    }
+
+    .progress {
+      width: 0;
+      height: 2px;
+      background: $primary;
+      position: absolute;
+      top: -1px;
+      transition: width 0.2s;
+    }
+  }
+
+  .pages {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .pages li {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 0 4px;
+    text-indent: -999px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .2);
+  }
+  
+  .pages li:hover {
+    background: #aaa;
+  }
+  
+  .pages li.active {
+    background: #666;
+  }
+
+  /* Frame */
+  .frame {
+    height: calc(100vh - #{$headerHeight} - 40px);
+  }
+
+  /* Slide */
+  .slidee {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    > section {
+      float: left;
+      height: 100%;
+      padding-top: $section-padding;
+      padding-right: $section-padding;
+      padding-left: $section-padding;
+      padding-bottom: 20px !important;
+      overflow-y: auto;
+    }
+
+    @media screen and (max-width: $min-width-sly) {
+      > section {
+        height: auto;
+        margin-bottom: 60px;
+      }
+    }
+
+    @include small {
+      > section {
+        padding: 0;
+        float: none;
+      }
+    }
+  }
+
+  .section {
+    .h1 {
+      margin-bottom: 1em;
+    }
+
+    .no-title {
+      height: 2.4rem;
+    }
+
+    .main-link {
+      display: inline-block;
+      margin-top: 1em;
+      text-transform: uppercase;
+      font-weight: $font-weight-bold;
+      color: $black;
+      transition: all .3s ease-in-out;
+
+      svg {
+        width: 50px;
+        transition: all .3s ease-in-out;
+      }
+
+      &:hover {
+        color: $primary;
+
+        svg {
+          fill: $primary;
+        }
+      }
+    }
+  }
+
+  .section-single-text {
+    display: flex;
+    width: 75vw;
+
+    &.section-home {
+      width: 100vw;
+      padding: 0;
+
+      .content {
+        width: 50%;
+      }
+    }
+
+    aside {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      &.multiple-img {
+        width: 50%;
+
+        img {
+          object-fit: cover;
+          width: 50%;
+  
+          &.img-main {
+            position: relative;
+            left: -20px;
+          }
+  
+          &.img-secondary {
+            height: 80%;
+          }
+        }
+      }
+
+      &.single-img {
+        width: 40%;
+      }
+
+      img {
+        object-fit: cover;
+      }
+
+      .img-main {
+        height: 100%;
+        max-height: 660px;
+      }
+    }
+
+    .content {
+      width: 60%;
+      padding: 0 3rem;
+      
+      .h1 {
+        position: relative;
+        right: 120px;
+        margin-top: 2em;
+        margin-bottom: 1.2em;
+      }
+    }
+
+    /* .section-single-text */
+    @media screen and (max-width: $min-width-sly) {
+      width: 100%;
+
+      &.section-home {
+        width: 100%;
+        margin-top: 30px;
+      }
+    }
+
+    @media screen and (max-width: 1000px) {
+      display: block;
+
+      &.section-home {
+        aside.multiple-img,
+        .content {
+          width: 100%;
+        }
+
+        aside.multiple-img {
+          min-height: 200px;
+
+          img.img-main {
+            left: 0;
+          }
+        }
+      }
+
+      aside.single-img {
+        width: 100%;
+
+        .img-main {
+          height: auto;
+          width: 70%;
+          margin: auto;
+        }
+      }
+
+      .content {
+        width: 100%;
+
+        .h1 {
+          right: 3rem;
+          margin-top: 1em;
+        }
+      }
+    }
+
+    @include small {
+      .content {
+        padding: 0;
+
+        .h1 {
+          right: 0;
+        }
+      }
+    }
+  }
+
+  .slidee .section-shop {
+    padding-left: 0;
+
+    &.first-slide {
+      padding-right: 0;
+      padding-left: $section-padding;
+    }
+
+    &.section-shop_link {
+      padding-left: $section-padding;
+    }
+
+    .h1 {
+      margin-bottom: 1em;
+    }
+
+    .products {
+      display: flex;
+
+      .product {
+        padding: 0 35px;
+        margin-bottom: 0;
+
+        .price {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    /* .section-shop */
+    @media screen and (max-width: $min-width-sly) {
+      height: auto;
+      padding-left: $section-padding;
+
+      &.first-slide {
+        padding-right: $section-padding;
+        margin-bottom: 0;
+        padding-bottom: 0 !important;
+      }
+
+      .no-title {
+        display: none;
+      }
+    }
+
+    @include small {
+      padding: 0;
+      margin-bottom: 0;
+
+      &.first-slide {
+        padding: 0;
+      }
+
+      .products {
+        display: block;
+
+        .product {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+
+  .section-shop-info {
+    display: flex;
+
+    .shop-link {
+      margin-top: 4.4rem;
+      border: 2px solid $primary;
+      width: 445px;
+      height: 445px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 3rem;
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      transition: .2s ease-out;
+
+      .title {
+        font-family: $font-family-serif;
+        font-weight: $font-weight-regular;
+        font-size: $font-size-2xl;
+        margin-bottom: 1em;
+        text-transform: initial;
+      }
+
+      &:hover {
+        background: $primary;
+        color: $white;
+      }
+
+      @media screen and (max-width: 1800px) {
+        width: 320px;
+        height: 320px;
+      }
+    }
+      
+    .section-services {
+      width: 600px;
+      margin-left: 60px;
+
+      ul {
+        height: 100%;
+        max-height: 580px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: stretch;
+      }
+
+      .service {
+        width: calc(50% - 20px);
+        margin: 10px;
+        border: 1px solid $black;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+
+        img {
+          height: 50px;
+          margin-bottom: 20px;
+
+          &.small-img {
+            height: 30px;
+          }
+        }
+
+        .subtitle {
+          margin-top: 0.7em;
+          font-size: $font-size-sm;
+          text-transform: initial;
+          font-weight: $font-weight-regular;
+        }
+      }
+    }
+
+    /* .section-shop-info */
+    @media screen and (max-width: $min-width-sly) {
+      align-items: stretch;
+
+      .shop-link {
+        margin-top: 0;
+      }
+
+      .section-services {
+        width: calc(100% - 320px);
+      }
+    }
+
+    @include small {
+      display: block;
+
+      .shop-link {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+
+        @include push--auto;
+      }
+
+      .section-services {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 60px;
+
+        ul {
+          display: block;
+        }
+
+        .service {
+          width: 100%;
+          margin: 10px 0;
+          padding: 20px;
+        }
+      }
+    }
+  }
+
+  .section-conseils,
+  .section-legal {
+    .section-3-col {
+      columns: 3;
+      height: calc(100% - 4.4rem);
+    }
+
+    h3 {
+      font-weight: $font-weight-bold;
+    }
+
+    @media screen and (max-width: $min-width-sly) {
+      .section-3-col {
+        columns: 2;
+        height: auto;
+      }
+    }
+
+    @include small {
+      .section-3-col {
+        columns: 1;
+      }
+    }
+  }
+
+  .section-conseils {
+    width: 95vw;
+
+    .section-3-col {
+      column-gap: 80px;
+      padding: 0 3rem 3rem 3rem;
+    }
+
+    .img-main {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      display: inline-block;
+      color: $black;
+      border: 2px solid $black;
+      text-transform: uppercase;
+      font-weight: $font-weight-bold;
+      padding: 5px 10px;
+      margin-bottom: 2rem;
+      transition: all .3s;
+
+      &:hover {
+        color: $primary;
+        border: 2px solid $primary;
+      }
+    }
+
+    p {
+      margin-top: 2em;
+      margin-bottom: 2em;
+    }
+
+    /* .section-conseils */
+    @media screen and (max-width: $min-width-sly) {
+      width: 100%;
+      column-gap: initial;
+    }
+
+    @include small {
+      .section-3-col {
+        padding: 0;
+      }
+    }
+  }
+  
+  .section-legal {
+    width: 95vw;
+    font-size: $font-size-sm;
+
+    @media screen and (max-width: $min-width-sly) {
+      width: 100%;
+    }
+  }
+
+  // Fix bug with last sly section
+  .section-last {
+    width: 0px;
+  }
+
+  @media screen and (max-width: 1800px) {
+    .attachment-woocommerce_thumbnail {
+      width: 320px;
+    }
+  }
+}

@@ -1,8 +1,41 @@
 html {
-	font-size: 60.5%;
+  font-size: 18px;
+  font-size: 18px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: $font-family;
 }
 
 body {
-  font-size: 1.6rem;
+  color: $black;
+}
+
+.h1 {
+  font-size: $font-size-2xl;
+  line-height: 1.2;
+  font-family: $font-family-serif;
+}
+
+img {
+  border-radius: 0;
+}
+
+p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  line-height: 1.375;
+}
+
+a:focus, 
+input:focus, 
+textarea:focus, 
+button:focus {
+  outline: none;
+}
+
+textarea {
   font-family: $font-family;
 }

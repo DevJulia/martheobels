@@ -86,24 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./assets/js/helpers/common.js":
-/*!*************************************!*\
-  !*** ./assets/js/helpers/common.js ***!
-  \*************************************/
-/*! exports provided: common */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "common", function() { return common; });
-function common() {
-  console.log($('body'));
-}
-
-
-
-/***/ }),
-
 /***/ "./assets/js/index.js":
 /*!****************************!*\
   !*** ./assets/js/index.js ***!
@@ -113,11 +95,157 @@ function common() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _helpers_common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/common.js */ "./assets/js/helpers/common.js");
+/* harmony import */ var _pages_home_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages/home.js */ "./assets/js/pages/home.js");
 
 $(document).ready(function () {
-  Object(_helpers_common_js__WEBPACK_IMPORTED_MODULE_0__["common"])();
+  if ($('body').hasClass('page-template-homepage')) {
+    Object(_pages_home_js__WEBPACK_IMPORTED_MODULE_0__["home"])();
+  }
+
+  var width = $('.single-product .square-text').outerWidth();
+  $('.single-product .square-text').css('height', width + 'px');
+  $(window).on('resize', function () {
+    var width = $('.single-product .square-text').outerWidth();
+    $('.single-product .square-text').css('height', width + 'px');
+  });
 });
+
+/***/ }),
+
+/***/ "./assets/js/pages/home.js":
+/*!*********************************!*\
+  !*** ./assets/js/pages/home.js ***!
+  \*********************************/
+/*! exports provided: home */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "home", function() { return home; });
+var minWidthSly = 1200;
+
+function home() {
+  // Splash screen
+  var $scene = $('.js-scene');
+
+  function slideSplash(e) {
+    var scrollingDown = function () {
+      var delta, compareEvent;
+
+      if (e.type === 'touchmove') {
+        compareEvent = 'touchmove';
+      } else {
+        compareEvent = 'DOMMouseScroll';
+      }
+
+      delta = e.type === compareEvent ? e.originalEvent.detail * -40 : e.originalEvent.wheelDelta;
+      return delta > 0 ? 0 : 1;
+    }();
+
+    if (scrollingDown) {
+      $scene.addClass('is-over');
+      $(window).off("mousewheel DOMMouseScroll touchmove keydown", slideSplash);
+    }
+  }
+
+  createSly();
+  $(window).on("mousewheel DOMMouseScroll touchmove keydown", slideSplash);
+}
+
+function createSly() {
+  // Create Sly instance
+  var $frame = $('#basic');
+  var $wrap = $frame.parent();
+  var sly = {};
+  var options = {
+    horizontal: 1,
+    itemNav: 'basic',
+    slidee: '.slidee',
+    smart: 1,
+    mouseDragging: 0,
+    // touchDragging: 1,
+    releaseSwing: 1,
+    startAt: 0,
+    scrollBar: $wrap.find('.scrollbar'),
+    scrollBy: 1,
+    speed: 500,
+    elasticBounds: 1,
+    dragHandle: 1,
+    dynamicHandle: 0,
+    clickBar: 1,
+    keyboardNavBy: 'items'
+  };
+
+  if ($(window).width() > minWidthSly) {
+    sly = new Sly($frame, options).init(); // Update progress bar
+
+    sly.on('moveEnd', function () {
+      updateNav(sly, nav);
+    });
+  }
+
+  var nav = [];
+  $('.navigation button').each(function () {
+    nav.push($(this).attr('data-item'));
+  });
+  $wrap.find('.toStart').on('click', function () {
+    var item = $(this).data('item'); // Animate a particular item to the start of the frame.
+    // If no item is provided, the whole content will be animated.
+
+    $frame.sly('toStart', item);
+  });
+  $(window).resize(function () {
+    if ($(window).width() <= minWidthSly) {
+      sly.destroy();
+    } else {
+      if (sly.initialized) {
+        sly.reload();
+      } else {
+        sly = new Sly($frame, options).init();
+        sly.on('moveEnd', function () {
+          updateNav(sly, nav);
+        });
+      }
+    }
+  }); //Fix Sly trackpad scroll
+
+  var recentScroll = false;
+  $(window).on('mousewheel', function (e) {
+    e.stopPropagation();
+
+    if (!recentScroll) {
+      var wheelDelta = e.originalEvent.wheelDelta;
+
+      if (wheelDelta > 0 && wheelDelta < 100) {
+        sly.nextPage();
+      } else if (wheelDelta < 0 && wheelDelta > -100) {
+        sly.prevPage();
+      }
+
+      recentScroll = true;
+      window.setTimeout(function () {
+        recentScroll = false;
+      }, 800);
+    }
+  });
+}
+
+function updateNav(sly, nav) {
+  var percentage = sly.pos.cur * 100 / sly.pos.end;
+  $('.scrollbar .progress').css('width', percentage + '%');
+  var currentIndex = Math.max.apply(null, nav.filter(function (v) {
+    return v <= sly.rel.firstItem;
+  }));
+  nav.forEach(function (item) {
+    if (item <= currentIndex) {
+      $('.navigation button[data-item="' + item + '"]').addClass('active');
+    } else {
+      $('.navigation button[data-item="' + item + '"]').removeClass('active');
+    }
+  });
+}
+
+
 
 /***/ }),
 

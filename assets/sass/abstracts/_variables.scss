@@ -1,4 +1,5 @@
 $font-family: 'Montserrat','Helvetica', 'Arial', 'Lucida Grande', sans-serif;
+$font-family-serif: 'Alice', serif;
 
 $font-weight-thin: 100;
 $font-weight-light: 300;
@@ -8,3 +9,28 @@ $font-weight-semi-bold: 600;
 $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
 $font-weight-black: 900;
+
+
+$font-size-2xs: 0.7rem;
+$font-size-xs: 0.8rem;
+$font-size-sm: 0.9rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.1rem;
+$font-size-xl: 1.3rem;
+$font-size-2xl: 2rem;
+
+$min-width-sly: 1200px;
+
+/* Home */
+$section-padding: 30px;
+
+/* Colors */
+$primary: #3300CC;
+$black: #000;
+$white: #fff;
+
+$gray-300: #F0F0F0;
+$gray-400: #7A7A7A;
+$gray-border: #CACACA;
+
+$headerHeight: 120px;
