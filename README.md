@@ -26,3 +26,4 @@ Avoid as much as possible to override Woocommerce/Storefront template. Use hooks
 - Responsive header and footer
 - Woocommerce configuration: add and configure required plugins and style the widgets if needed
 - Write or organize a training session with the client to help her use the backoffice
+- My account pages
